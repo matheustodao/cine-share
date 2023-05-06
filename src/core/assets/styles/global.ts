@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
     padding: 0;
     box-sizing: border-box;
     outline: none;
+    border: none;
   }
 
   :root {
