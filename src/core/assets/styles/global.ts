@@ -18,4 +18,8 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
     margin: 1.6rem;
     font-size: ${theme.fonts.sizes.medium};
   }
+
+  button {
+    cursor: pointer;
+  }
 `);
