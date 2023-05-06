@@ -7,16 +7,18 @@ interface BubblesProps {
 export const Bubbles = styled.div<BubblesProps>(({ theme, schema = 'blue' }) => `
   --color: ${schema === 'blue' ? theme.colors.blue[500] : theme.colors.red[600]};
 
-  position: absolute;
-  top: ${schema === 'blue' ? '24%' : '0'};;
-  left: ${schema === 'blue' ? '60%' : '0'};
+  position: fixed;
+  top: ${schema === 'blue' ? '48%' : '20%'};;
+  left: ${schema === 'blue' ? '80%' : '-10%'};
 
-  width: calc(80vw/2);
-  height: calc(80vw/2);
+  width: 35rem;
+  height: 45rem;
 
   border-radius: 100%;
 
   background: var(--color);
   opacity: 0.58;
   filter: blur(45.5px);
+
+  z-index: -2;
 `);
