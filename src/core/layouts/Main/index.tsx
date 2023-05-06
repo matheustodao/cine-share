@@ -1,19 +1,23 @@
+'use client';
+
 import { IChildren } from 'domain/core/core';
+import { Bubbles } from '../components/Bubbles';
 import { Provider } from '../provider';
+import { Container, Content } from './styles';
 
 export function MainLayout({ children }: IChildren) {
   return (
     <Provider>
-      <div className="circle" />
-      <div className="circle" />
+      <Bubbles />
+      <Bubbles schema="red" />
 
-      <div>
+      <Container>
         <div className="nav" />
 
-        <div className="content">
+        <Content>
           {children}
-        </div>
-      </div>
+        </Content>
+      </Container>
     </Provider>
   );
 }
