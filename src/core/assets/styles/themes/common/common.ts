@@ -34,6 +34,12 @@ export const commonStyles = {
     },
   },
 
+  rounded: {
+    small: '1rem',
+    medium: '1.2rem',
+    large: '2rem',
+  },
+
   colors: {
     red: {
       900: '#C52233',
