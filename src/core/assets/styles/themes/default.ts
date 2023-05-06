@@ -11,5 +11,10 @@ export const defaultTheme = {
       600: 'rgba(255, 255, 255, 0.7)',
       500: 'rgba(255, 255, 255, 0.6)',
     },
+
+    bg: {
+      app: '#241E39',
+      content: '#2D205A',
+    },
   },
 };
