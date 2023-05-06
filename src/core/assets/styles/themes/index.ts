@@ -10,4 +10,4 @@ const combineTheme = (theme: typeof defaultTheme) => ({
   },
 });
 
-export const DEFAULT_THEME = combineTheme(defaultTheme);
+export const DEFAULT_THEME = { ...combineTheme(defaultTheme) } as const;
