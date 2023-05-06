@@ -1,3 +1,5 @@
+import { brandColor } from './brandColor';
+
 export const commonStyles = {
   fonts: {
     title: {
@@ -56,5 +58,7 @@ export const commonStyles = {
     white: {
       900: '#FFFFFF',
     },
+
+    brand: brandColor,
   },
 };
