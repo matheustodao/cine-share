@@ -7,16 +7,18 @@ interface RouteProps {
 export const Container = styled.nav(({ theme }) => `
   background: ${theme.colors.bg.app};
   padding: 7.8rem 3.4rem;
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
 
   @media (min-width: 1360px) {
     max-width: 38.3rem;
-    min-height: 93vh;
+    max-height: 95vh;
 
-    right: 3rem;
-    top: 5rem;
+    top: 4%;
+    left: 74%;
 
     border-radius: ${theme.rounded.medium};
   }
