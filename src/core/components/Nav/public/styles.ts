@@ -13,6 +13,8 @@ export const Container = styled.nav(({ theme }) => `
   width: 100%;
   height: 100%;
 
+  overflow-y: scroll;
+
   @media (min-width: 1360px) {
     max-width: 38.3rem;
     max-height: 95vh;
