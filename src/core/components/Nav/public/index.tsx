@@ -2,6 +2,7 @@ import { X } from '@phosphor-icons/react';
 
 import { Portal } from 'core/components/Portal';
 import { Text } from 'core/components/Typography/Text';
+import { useNavModel } from 'core/model/components/Nav';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -12,6 +13,8 @@ import {
 } from './styles';
 
 export function NavPublic() {
+  const { routesDynamicProtected } = useNavModel();
+
   return (
     <Portal>
       <Container>
@@ -27,11 +30,15 @@ export function NavPublic() {
 
         <div>
           <Nav>
-            <Route active="true">
-              <Link href="/" role="link">
-                Home
-              </Link>
-            </Route>
+            {routesDynamicProtected.map(({
+              active, label, link,
+            }) => (
+              <Route active={active.toString() as 'true' | 'false'} key={link}>
+                <Link href={link} role="link">
+                  {label}
+                </Link>
+              </Route>
+            ))}
           </Nav>
         </div>
       </Container>
