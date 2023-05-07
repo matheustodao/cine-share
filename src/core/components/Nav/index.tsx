@@ -12,7 +12,7 @@ import {
   Route,
 } from './styles';
 
-export function Nav() {
+export function Navigation() {
   const { routesDynamicProtected } = useNavModel();
 
   return (
