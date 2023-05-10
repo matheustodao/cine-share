@@ -1,7 +1,7 @@
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
-import { NavRoute, RouteRoleType } from 'domain/core/components/nav';
+import { NavRoute, RouteRoleType } from 'types/presentation/components/nav';
 import { navRoutes } from './routes';
 
 export function useNavHandler() {

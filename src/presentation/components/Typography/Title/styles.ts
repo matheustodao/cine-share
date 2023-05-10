@@ -1,22 +1,22 @@
-import { BodyFontWeightType, SizesFontType, TextColorType } from 'domain/styled-components';
 import styled, { css } from 'styled-components';
+import { SizesFontType, TextColorType, TitleFontWeightType } from 'types/styled-components';
 
-export interface TextProps {
-  weight?: BodyFontWeightType,
+export interface TitleProps {
+  weight?: TitleFontWeightType,
   schema?: TextColorType,
   size?: SizesFontType,
 }
 
-export const StyledText = styled.h2<TextProps>(({
+export const StyledTitle = styled.h2<TitleProps>(({
   theme, weight, schema, size,
 }) => css`
-  font-family: ${theme.fonts.body.family};
+  font-family: ${theme.fonts.title.family};
   ${schema && css`
     color: ${theme.colors.text[schema]};
   `}
 
   ${weight && css`
-    font-weight: ${theme.fonts.body.weight[weight]};
+    font-weight: ${theme.fonts.title.weight[weight]};
   `}
 
   font-size: ${!size ? theme.fonts.sizes.medium : theme.fonts.sizes[size]};

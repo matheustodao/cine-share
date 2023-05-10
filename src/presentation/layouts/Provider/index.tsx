@@ -1,8 +1,8 @@
 import { ThemeProvider } from 'styled-components';
 
-import { GlobalStyle } from 'core/assets/styles/global';
-import { DEFAULT_THEME } from 'core/assets/styles/themes';
-import { IChildren } from 'domain/core/core';
+import { GlobalStyle } from 'presentation/assets/styles/global';
+import { DEFAULT_THEME } from 'presentation/assets/styles/themes';
+import { IChildren } from 'types/presentation/core';
 
 export function Provider({ children }: IChildren) {
   return (

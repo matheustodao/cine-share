@@ -1,6 +1,6 @@
-import { usePortalHandler } from 'core/handler/components/Portal';
-import { PortalProps } from 'domain/core/components/portal';
+import { usePortalHandler } from 'presentation/handler/components/Portal';
 import { createPortal } from 'react-dom';
+import { PortalProps } from 'types/presentation/components/portal';
 
 export function Portal({ children, selector }: PortalProps) {
   const { element, mounted } = usePortalHandler({ selector });
