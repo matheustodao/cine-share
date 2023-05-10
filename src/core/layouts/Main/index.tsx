@@ -1,8 +1,9 @@
 'use client';
 
+import { Header } from 'core/components/Header';
 import { IChildren } from 'domain/core/core';
+import { Provider } from '../Provider';
 import { Bubbles } from '../components/Bubbles';
-import { Provider } from '../provider';
 import { Container, Content } from './styles';
 
 export function MainLayout({ children }: IChildren) {
@@ -11,8 +12,8 @@ export function MainLayout({ children }: IChildren) {
       <Bubbles />
       <Bubbles schema="red" />
 
-      <Container>
-        <div className="nav" />
+      <Container role="application">
+        <Header />
 
         <Content>
           {children}
