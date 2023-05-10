@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from 'core/assets/styles/themes';
+import { DEFAULT_THEME } from 'presentation/assets/styles/themes';
 import 'styled-components';
 
 type DefaultThemeType = typeof DEFAULT_THEME;

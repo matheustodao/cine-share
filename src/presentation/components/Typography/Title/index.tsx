@@ -1,5 +1,5 @@
 /* eslint-disable react/require-default-props */
-import { IChildren } from 'domain/core/core';
+import { IChildren } from 'types/presentation/core';
 import { StyledTitle, TitleProps as TitlePropsStyled } from './styles';
 
 interface TitleProps extends TitlePropsStyled, IChildren {

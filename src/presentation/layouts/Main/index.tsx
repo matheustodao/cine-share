@@ -1,7 +1,7 @@
 'use client';
 
-import { Header } from 'core/components/Header';
-import { IChildren } from 'domain/core/core';
+import { Header } from 'presentation/components/Header';
+import { IChildren } from 'types/presentation/core';
 import { Provider } from '../Provider';
 import { Bubbles } from '../components/Bubbles';
 import { Container, Content } from './styles';

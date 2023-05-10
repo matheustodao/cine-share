@@ -1,15 +1,15 @@
 import { X } from '@phosphor-icons/react';
 
-import { Portal } from 'core/components/Portal';
-import { Text } from 'core/components/Typography/Text';
-import { useNavHandler } from 'core/handler/components/Nav';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Portal } from 'presentation/components/Portal';
+import { Text } from 'presentation/components/Typography/Text';
+import { useNavHandler } from 'presentation/handler/components/Nav';
 import {
-  Container,
-  Header,
-  Nav,
-  Route,
+    Container,
+    Header,
+    Nav,
+    Route,
 } from './styles';
 
 export function Navigation() {

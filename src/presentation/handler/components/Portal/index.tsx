@@ -1,5 +1,5 @@
-import { UsePortalHandlerProps } from 'domain/core/components/portal';
 import { useEffect, useRef, useState } from 'react';
+import { UsePortalHandlerProps } from 'types/presentation/components/portal';
 
 export function usePortalHandler({ selector }: UsePortalHandlerProps) {
   const refElement = useRef(null as Element | null);
