@@ -19,7 +19,7 @@ export const Container = styled.nav(({ theme }) => `
     max-width: 38.3rem;
     max-height: 95vh;
 
-    top: 4%;
+    top: 2rem;
     left: 74%;
 
     border-radius: ${theme.rounded.medium};
