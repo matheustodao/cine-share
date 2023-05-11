@@ -1,5 +1,6 @@
 import { List, MagnifyingGlass } from '@phosphor-icons/react';
 import Image from 'next/image';
+import { useHeaderHandler } from 'presentation/handler/components/Header';
 import { Text } from '../Typography/Text';
 
 import { Navigation } from '../Nav';
@@ -8,6 +9,8 @@ import {
 } from './styles';
 
 export function Header() {
+  const { navIsVisible, handleCloseNavVisibility, handleToggleNavVisibility } = useHeaderHandler();
+
   return (
     <Container>
       <Content>
@@ -20,7 +23,7 @@ export function Header() {
             </Text>
           </IconButton>
 
-          <IconButton type="button">
+          <IconButton type="button" onClick={handleToggleNavVisibility}>
             <Text schema={900}>
               <List size={32} />
             </Text>
@@ -28,7 +31,7 @@ export function Header() {
         </Actions>
       </Content>
 
-      <Navigation />
+      <Navigation shown={navIsVisible} onClose={handleCloseNavVisibility} />
     </Container>
   );
 }
