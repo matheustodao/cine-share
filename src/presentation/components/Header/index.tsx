@@ -1,4 +1,5 @@
 import { List, MagnifyingGlass } from '@phosphor-icons/react';
+import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useHeaderHandler } from 'presentation/handler/components/Header';
 import { Text } from '../Typography/Text';
@@ -9,7 +10,9 @@ import {
 } from './styles';
 
 export function Header() {
-  const { navIsVisible, handleCloseNavVisibility, handleToggleNavVisibility } = useHeaderHandler();
+  const {
+    navIsVisible, handleCloseNavVisibility, handleToggleNavVisibility,
+  } = useHeaderHandler();
 
   return (
     <Container>
@@ -31,7 +34,12 @@ export function Header() {
         </Actions>
       </Content>
 
-      <Navigation shown={navIsVisible} onClose={handleCloseNavVisibility} />
+      <AnimatePresence mode="wait">
+        <Navigation
+          shown={navIsVisible}
+          onClose={handleCloseNavVisibility}
+        />
+      </AnimatePresence>
     </Container>
   );
 }

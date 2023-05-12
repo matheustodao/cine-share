@@ -1,10 +1,11 @@
+import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
 interface RouteProps {
   active: 'true' | 'false'
 }
 
-export const Container = styled.nav(({ theme }) => `
+export const Container = styled(motion.nav)(({ theme }) => `
   background: ${theme.colors.bg.app};
   padding: 7.8rem 3.4rem;
   position: fixed;
