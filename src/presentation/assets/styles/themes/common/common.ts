@@ -40,6 +40,17 @@ export const commonStyles = {
     large: '2rem',
   },
 
+  zIndex: {
+    small: 30,
+    medium: 50,
+    large: 100,
+    xl: 150,
+    xxl: 200,
+    '3xl': 250,
+    '4xl': 300,
+    '5xl': 350,
+  },
+
   colors: {
     red: {
       900: '#C52233',
