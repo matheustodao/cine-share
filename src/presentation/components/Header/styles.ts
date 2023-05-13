@@ -7,6 +7,7 @@ export const Container = styled.header`
   align-items: center;
 
   height: 5.4rem;
+  z-index: ${({ theme }) => theme.zIndex.medium};
 `;
 
 export const Content = styled.div(({ theme }) => `

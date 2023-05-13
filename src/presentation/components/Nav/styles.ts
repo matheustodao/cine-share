@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
+import { StyledBooleanType } from 'types/styled-components';
 
 interface RouteProps {
-  active: 'true' | 'false'
+  active: StyledBooleanType
 }
 
 export const Container = styled(motion.nav)(({ theme }) => `
@@ -15,6 +16,8 @@ export const Container = styled(motion.nav)(({ theme }) => `
   height: 100%;
 
   overflow-y: scroll;
+
+  z-index: ${theme.zIndex.large};
 
   @media (min-width: 1360px) {
     max-width: 38.3rem;
