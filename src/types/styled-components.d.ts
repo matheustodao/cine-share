@@ -7,6 +7,7 @@ export type TitleFontWeightType = keyof DefaultThemeType['fonts']['title']['weig
 export type BodyFontWeightType = keyof DefaultThemeType['fonts']['body']['weight'];
 export type SizesFontType = keyof DefaultThemeType['fonts']['sizes'];
 export type TextColorType = keyof DefaultThemeType['colors']['text'];
+export type StyledBooleanType = 'true' | 'false';
 
 declare module 'styled-components' {
   export interface DefaultTheme extends DefaultThemeType { }
