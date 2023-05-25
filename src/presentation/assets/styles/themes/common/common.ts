@@ -72,7 +72,9 @@ export const commonStyles = {
       100: '#BDD5F9',
     },
 
-    white: {
+    white: '#FFFFFF',
+
+    whiteAlpha: {
       900: '#FFFFFF',
     },
 

@@ -42,6 +42,8 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
     background: ${theme.colors.bg.app};
     margin: 1.6rem;
     font-size: ${theme.fonts.sizes.medium};
+    font-family: ${theme.fonts.title.family};
+    color: ${theme.colors.white};
   }
 
   button {
