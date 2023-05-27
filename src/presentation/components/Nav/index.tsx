@@ -7,10 +7,10 @@ import { useNavHandler } from 'presentation/handler/components/Nav';
 import { NavigationProps } from 'types/presentation/nav';
 import { Portal } from '../Portal';
 import {
-    Container,
-    Header,
-    Nav,
-    Route,
+  Container,
+  Header,
+  Nav,
+  Route,
 } from './styles';
 
 export function Navigation({ onClose, shown }: NavigationProps) {

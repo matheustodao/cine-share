@@ -75,7 +75,7 @@ export function useNavHandler() {
   useEffect(() => {
     settingRouteActive();
     settingRoutesDynamicProtected('public', 'all');
-  }, []);
+  }, [settingRouteActive, settingRoutesDynamicProtected]);
 
   return {
     mergeRoutes,
