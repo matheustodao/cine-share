@@ -79,5 +79,9 @@ export const commonStyles = {
     },
 
     brand: brandColor,
+
+    blackAlpha: {
+      50: 'rgba(155, 155, 155, 0.1)',
+    },
   },
 };
