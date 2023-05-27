@@ -4,7 +4,7 @@ import { Popcorn } from '@phosphor-icons/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { CineCardProps } from 'types/presentation/components/cine';
+import { CineCardProps } from 'types/presentation/cine';
 import { Container, Content, WrapperImage } from './styles';
 
 export function CineCard({ id, title, image }: CineCardProps) {

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Text } from 'presentation/components/Typography/Text';
 import { useNavHandler } from 'presentation/handler/components/Nav';
-import { NavigationProps } from 'types/presentation/components/nav';
+import { NavigationProps } from 'types/presentation/nav';
 import { Portal } from '../Portal';
 import {
   Container,

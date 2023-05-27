@@ -1,6 +1,6 @@
 import Skeleton from 'react-loading-skeleton';
 import { ThemeConsumer } from 'styled-components';
-import { CineCardLoaderProps } from 'types/presentation/components/cine';
+import { CineCardLoaderProps } from 'types/presentation/cine';
 
 export function CineCardLoader({ count, wrapper }: CineCardLoaderProps) {
   return (
