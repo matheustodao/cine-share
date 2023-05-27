@@ -1,4 +1,4 @@
-import { NavRoute } from 'types/presentation/components/nav';
+import { NavRoute } from 'types/presentation/nav';
 
 export const navRoutes: NavRoute[] = [
   {

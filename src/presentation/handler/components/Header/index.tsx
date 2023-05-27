@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { HeaderHandlerProps } from 'types/presentation/components/header';
+import { HeaderHandlerProps } from 'types/presentation/header';
 
 export function useHeaderHandler(): HeaderHandlerProps {
   const [navIsVisible, setNavIsVisible] = useState<boolean>(false);
