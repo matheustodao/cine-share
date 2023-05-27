@@ -42,6 +42,7 @@ export const Content = styled.div(({ theme }) => `
     padding: 0.3rem;
     border-radius: ${theme.rounded.large};
     background: ${theme.colors.red[600]};
+    color: ${theme.colors.white};
     z-index: 2;
     right: 0.6rem;
     top: 0.7rem;
