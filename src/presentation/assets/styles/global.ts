@@ -32,6 +32,11 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
     ::-webkit-scrollbar-thumb:hover {
       background: ${theme.colors.brand[300]};
     }
+
+    :focus-visible {
+      outline: thin auto;
+      outline-offset: 1rem;
+    }
   }
 
   :root {
