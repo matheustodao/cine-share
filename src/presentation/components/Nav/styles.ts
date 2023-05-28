@@ -55,18 +55,24 @@ export const Nav = styled.ul`
 `;
 
 export const Route = styled.li<RouteProps>(({ theme, active }) => `
-  font-family: ${theme.fonts.title.family};
-  font-weight: ${theme.fonts.title.weight.semi};
-  font-size: ${theme.fonts.sizes.large};
+  a {
+    font-family: ${theme.fonts.title.family};
+    font-weight: ${theme.fonts.title.weight.semi};
+    font-size: ${theme.fonts.sizes.large};
 
-  color: ${theme.colors.text[600]};
+    color: ${theme.colors.text[600]};
+    text-decoration: none;
+  }
 
   padding: 1.75rem 0;
 
   ${active === 'true' && css`
-    color: ${theme.colors.brand[100]};
     border-left: 3px solid;
     border-color: ${theme.colors.brand[100]};
     padding-left: 1.2rem;
+
+    a {
+      color: ${theme.colors.brand[100]};
+    }
   `}
 `);

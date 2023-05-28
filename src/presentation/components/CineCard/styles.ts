@@ -29,7 +29,8 @@ export const Container = styled.div(({ theme }) => `
   border: 1px solid;
   border-color: ${theme.colors.brand[400]};
   transition: all 0.320s ease-in-out;
-  :hover {
+
+  &:hover {
     transform: scale(1.02);
   }
 `);
