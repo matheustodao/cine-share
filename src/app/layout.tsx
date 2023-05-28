@@ -1,7 +1,4 @@
-import { Inter } from 'next/font/google';
 import { MainLayout } from 'presentation/layouts/Main';
-
-const inter = Inter({ subsets: ['latin'], variable: '--title-font' });
 
 export const metadata = {
   title: 'Cine Share',
@@ -14,7 +11,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en">
       <body>
         <MainLayout>
           {children}
