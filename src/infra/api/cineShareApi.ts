@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { getBaseUrl } from 'core/getBaseURL';
+import { NEXT_PUBLIC_NEXT_URL } from 'infra/config/env';
 
 export const cineShareApi = axios.create({
-  baseURL: `${getBaseUrl()}/api`,
+  baseURL: `${NEXT_PUBLIC_NEXT_URL}/localhost:3000/api`,
 });
