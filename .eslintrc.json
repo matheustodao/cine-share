@@ -27,6 +27,8 @@
     "react/jsx-props-no-spreading": "off",
     "react/no-array-index-key": "off",
     "class-methods-use-this": "off",
-    "react/jsx-key": "error"
+    "react/jsx-key": "error",
+    "consistent-return": "off",
+    "@typescript-eslint/naming-convention": "off"
   }
 }
