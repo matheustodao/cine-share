@@ -1,4 +1,5 @@
 import { parsedQuery } from 'core/parsedQuery';
+
 import { NextResponse } from 'next/server';
 import { getMoviesUseCase } from 'server/modules/media/getMovies';
 

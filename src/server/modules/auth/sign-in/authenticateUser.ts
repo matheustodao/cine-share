@@ -4,7 +4,7 @@ import { AuthParams, UserParams } from 'types/server/auth';
 
 export async function authenticateUserUseCase({
   email, password,
-}: AuthParams): Promise<Omit<UserParams, 'password'> | null> {
+}: AuthParams): Promise<UserParams | null> {
   const existsUser = await prisma.user.findFirst({ where: { email } });
 
   if (!existsUser) {
