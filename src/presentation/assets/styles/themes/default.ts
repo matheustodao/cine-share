@@ -2,6 +2,7 @@ export const defaultTheme = {
   colors: {
     grey: {
       300: '#BDBDBD',
+      200: '#CCCCCC',
       '300/30': 'rgba(217, 217, 217, .3)',
     },
 

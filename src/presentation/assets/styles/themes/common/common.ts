@@ -76,6 +76,7 @@ export const commonStyles = {
 
     whiteAlpha: {
       900: '#FFFFFF',
+      700: 'rgba(255, 255, 255, 0.8)',
     },
 
     brand: brandColor,
