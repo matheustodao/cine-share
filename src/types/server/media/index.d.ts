@@ -2,9 +2,13 @@ import { Media } from '@prisma/client';
 
 export type MediaParams = Media;
 
-export type MediaParamsData = Omit<MediaParams, 'id'>;
+export type MediaParamsData = Omit<MediaParams, 'id'> & {
+  userId: string,
+};
 
 export interface MediaParamsDeleteData {
-  // collectionId: string,
+  userId: string,
+  collectionId: string,
   mediaId: string,
+  userId: string,
 }

@@ -1,3 +1,4 @@
+import { getUserId } from 'core/getUserId';
 import { NextResponse } from 'next/server';
 import { setMediaInCollectionUseCase } from 'server/modules/media/setMediaInCollection';
 import { MediaParamsData } from 'types/server/media';
@@ -11,10 +12,19 @@ export async function POST(req: Request) {
     }, { status: 400 });
   }
 
+  const userId = await getUserId();
+
+  if (!userId) {
+    return NextResponse.json({
+      error: 'Not authenticate',
+    }, { status: 400 });
+  }
+
   const movieData = await setMediaInCollectionUseCase({
     collectionId,
     tmdb_id,
     type,
+    userId,
   });
 
   return NextResponse.json(movieData);
