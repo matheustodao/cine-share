@@ -1,5 +1,4 @@
-import { URLSearchParams } from 'url';
-
-export function parsedQuery(searchParams: URLSearchParams) {
+export function parsedQuery(url: string) {
+  const { searchParams } = new URL(url);
   return Object.fromEntries(searchParams.entries());
 }
