@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { getTvShowsUseCase } from 'server/modules/media/getTvShows';
 
 export async function GET(req: Request) {
-  const query = parsedQuery(new URL(req.url).searchParams);
+  const query = parsedQuery(req.url);
 
   try {
     const response = await getTvShowsUseCase({

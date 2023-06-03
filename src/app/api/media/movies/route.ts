@@ -4,7 +4,7 @@ import { getMoviesUseCase } from 'server/modules/media/getMovies';
 
 export async function GET(req: Request) {
   try {
-    const query = parsedQuery(new URL(req.url).searchParams);
+    const query = parsedQuery(req.url);
 
     const response = await getMoviesUseCase({
       ...query,
