@@ -5,8 +5,9 @@ export const Container = styled.section`
   flex-direction: column;
   max-width: 36.2rem;
   margin: auto;
-  height: 80vh;
   justify-content: center;
+  align-self: center;
+  margin-top: 32%;
 
   h1 {
     letter-spacing: 0.04em;
@@ -25,11 +26,19 @@ export const Form = styled.form`
 
   gap: 1.2rem;
 
-  input, button {
+  > div, .actions > button, .actions > a {
     width: 100%;
+    flex: 1;
   }
 
-  button {
-    margin-top: 1.5rem;
+  .actions {
+    a {
+      margin-top: 1.2rem;
+    }
+    > button {
+      margin-top: 1.5rem;
+      max-height: 5.1rem;
+      height: 5.1rem;
+    }
   }
 `;
