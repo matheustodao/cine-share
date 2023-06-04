@@ -1,10 +1,33 @@
 import { prisma } from 'core/prisma';
-import { CollectionParams } from 'types/server/collection';
+import { ResponsesCollection } from 'types/server/collection';
 
-export async function indexUserCollectionUseCase(userId: string): Promise<CollectionParams[]> {
+export async function indexUserCollectionUseCase(userId: string): Promise<ResponsesCollection[]> {
   const collections = await prisma.collection.findMany({
     where: {
       userId,
+    },
+    select: {
+      _count: {
+        select: {
+          media: true,
+        },
+      },
+      id: true,
+      name: true,
+      description: true,
+      user: {
+        select: {
+          name: true,
+          id: true,
+        },
+      },
+      media: {
+        select: {
+          id: true,
+          tmdb_id: true,
+          collectionId: true,
+        },
+      },
     },
   });
 

@@ -6,7 +6,7 @@ export type CollectionParams = Collection;
 
 export type CollectionParamsData = Pick<Collection, 'name' | 'description' | 'userId'>;
 
-export interface ResponsesGetCollectionUseCase extends Omit<CollectionParams, 'created_at' | 'updated_at' | 'userId'> {
+export interface ResponsesCollection extends Omit<CollectionParams, 'created_at' | 'updated_at' | 'userId'> {
   media: Omit<MediaParams, 'type'>[],
   user: Pick<UserParams, 'id' | 'name'>,
   _count: {
