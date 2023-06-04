@@ -1,4 +1,3 @@
-import { Lato, Sora } from 'next/font/google';
 import { QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
@@ -17,27 +16,13 @@ import 'swiper/css';
 import 'swiper/css/mousewheel';
 import 'swiper/css/navigation';
 
-const lato = Lato({
-  subsets: ['latin'],
-  variable: '--text-font',
-  fallback: ['sans-serif'],
-  weight: ['700', '400', '900'],
-});
-
-const sora = Sora({
-  subsets: ['latin'],
-  variable: '--title-font',
-  fallback: ['sans-serif'],
-  weight: ['700', '600', '500', '400'],
-});
-
 export function Provider({ children, session }: IProviderProps) {
   return (
     <SessionProvider session={session}>
       <AuthContextProvider>
         <ThemeProvider theme={DEFAULT_THEME}>
           <QueryClientProvider client={queryClient}>
-            <div className={`${lato.variable} ${sora.variable}`}>
+            <div>
               <GlobalStyle />
               {children}
             </div>
