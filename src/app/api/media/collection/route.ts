@@ -10,9 +10,10 @@ export async function POST(req: Request) {
     type,
     original_language,
     poster_path,
+    title,
   }: Omit<MediaParamsData, 'userId'> = await req.json();
 
-  if (!collectionId || !tmdb_id || !type || !original_language || !poster_path) {
+  if (!collectionId || !tmdb_id || !type || !original_language || !poster_path || !title) {
     return NextResponse.json({
       error: 'collectionId, tmdb_id, original_language, poster_path and type fields is missing',
     }, { status: 400 });
@@ -33,6 +34,7 @@ export async function POST(req: Request) {
     userId,
     original_language,
     poster_path,
+    title,
   });
 
   return NextResponse.json(movieData);
