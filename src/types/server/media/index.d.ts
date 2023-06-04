@@ -10,5 +10,4 @@ export interface MediaParamsDeleteData {
   userId: string,
   collectionId: string,
   mediaId: string,
-  userId: string,
 }
