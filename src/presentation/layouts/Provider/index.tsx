@@ -1,5 +1,6 @@
 import { Lato, Sora } from 'next/font/google';
 import { QueryClientProvider } from 'react-query';
+import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle } from 'presentation/assets/styles/global';
@@ -9,7 +10,9 @@ import { IProviderProps } from 'types/presentation/core';
 
 import { SessionProvider } from 'next-auth/react';
 import { AuthContextProvider } from 'presentation/context/AuthContext';
+
 import 'react-loading-skeleton/dist/skeleton.css';
+import 'react-toastify/dist/ReactToastify.css';
 import 'swiper/css';
 import 'swiper/css/mousewheel';
 import 'swiper/css/navigation';
@@ -38,6 +41,7 @@ export function Provider({ children, session }: IProviderProps) {
               <GlobalStyle />
               {children}
             </div>
+            <ToastContainer theme="dark" position="top-left" />
           </QueryClientProvider>
         </ThemeProvider>
       </AuthContextProvider>

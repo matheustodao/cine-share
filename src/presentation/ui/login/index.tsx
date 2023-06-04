@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import { Button } from 'presentation/components/Button';
 import { Input } from 'presentation/components/Form/Input';
@@ -27,11 +28,15 @@ export function LoginUI() {
     try {
       setLoading(true);
 
-      await signIn('credentials', {
+      const { error } = await signIn('credentials', {
         redirect: false,
         email: data.email,
         password: data.password,
       });
+
+      if (error) {
+        return toast.error('Senha ou email inválido', { position: 'bottom-center' });
+      }
 
       router.push('/');
     } finally {
