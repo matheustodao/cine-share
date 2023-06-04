@@ -8,6 +8,8 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
     outline: none;
     border: none;
 
+    transition: all 160ms ease;
+
     ::-webkit-scrollbar {
       width: 0.2rem;
     }
