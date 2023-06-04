@@ -28,13 +28,13 @@ export function LoginUI() {
     try {
       setLoading(true);
 
-      const { error } = await signIn('credentials', {
+      const response = await signIn('credentials', {
         redirect: false,
         email: data.email,
         password: data.password,
       });
 
-      if (error) {
+      if (response?.error) {
         return toast.error('Senha ou email inválido', { position: 'bottom-center' });
       }
 
@@ -49,7 +49,7 @@ export function LoginUI() {
         Login
       </Title>
 
-      <Form onSubmit={handleSubmit(handleSignIn)}>
+      <Form onSubmit={handleSubmit(handleSignIn)} noValidate>
         <FormGroup errorMessage={errors?.email?.message}>
           <Input type="email" placeholder="Email" {...register('email')} />
         </FormGroup>
