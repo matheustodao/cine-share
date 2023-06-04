@@ -1,7 +1,7 @@
 import { MediaParamsData } from 'types/server/media';
 
 export interface CollectionModalCreateProps {
-  onClose: () => {},
+  onClose: () => void,
   visible: boolean
 }
 
@@ -12,5 +12,5 @@ export interface CollectionCardProps {
 }
 
 export interface SetMediaCollectionModalProps extends Pick<CollectionModalCreateProps, 'onClose' | 'visible'> {
-  media?: Pick<MediaParamsData, 'tmdb_id' | 'type'>
+  media?: Omit<MediaParamsData, 'userId' | 'collectionId'>
 }
