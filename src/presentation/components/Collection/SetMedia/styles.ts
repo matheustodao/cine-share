@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Content = styled.div`
+export const Content = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +32,6 @@ export const ListCollection = styled.ul`
   justify-content: flex-start;
   gap: 1.6rem;
 
-  padding-top: 2.4rem;
   padding-bottom: 2.4rem;
 
   max-height: 30rem;

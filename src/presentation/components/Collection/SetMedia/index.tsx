@@ -6,17 +6,42 @@ import { Title } from 'presentation/components/Typography/Title';
 
 import { SetMediaCollectionModalProps } from 'types/presentation/collection';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from 'presentation/components/Button';
 import { Loader } from 'presentation/components/Loader';
 import { useSetMediaCollectionModalHandler } from 'presentation/handler/components/Collection/MediaModal';
+import { SchemaSetMediaIntoCollection, validationSchemaSetMediaIntoCollection } from 'presentation/validations/collection/setMedia';
+import { useForm } from 'react-hook-form';
 import { ResponsesCollection } from 'types/server/collection';
 import { CollectionCard } from '../Card';
 import { CollectionModalCreate } from '../Create';
 import { ModalContainerCollection } from '../styles/ModalContainer';
+import { CheckboxElement } from './components/CheckboxElement';
 import { Content, ListCollection } from './styles';
 
 export function SetMediaCollectionModal({ visible, onClose }: SetMediaCollectionModalProps) {
   const { collections, createCollectionModal } = useSetMediaCollectionModalHandler();
+  const { register, watch, handleSubmit } = useForm<SchemaSetMediaIntoCollection>({
+    resolver: zodResolver(validationSchemaSetMediaIntoCollection),
+  });
+
+  const collectionsSelected = watch('collections');
+
+  function setMediaIntoCollections(data: SchemaSetMediaIntoCollection) {
+    console.log({ data });
+  }
+
+  function currentIsCollectionSelected(collectionId: string) {
+    if (collectionsSelected?.length === 0 || typeof collectionsSelected === 'undefined') {
+      return true;
+    }
+
+    const isSelectedCollection = collectionsSelected?.findIndex((item) => (
+      item === collectionId
+    ));
+
+    return isSelectedCollection === -1;
+  }
 
   if (!visible) {
     return null;
@@ -39,17 +64,24 @@ export function SetMediaCollectionModal({ visible, onClose }: SetMediaCollection
             </button>
           </div>
 
-          <Content>
+          <Content onSubmit={handleSubmit(setMediaIntoCollections)}>
             <ListCollection>
               {collections.isLoading && <Loader size={50} />}
               {!collections.isLoading && collections.data?.length > 0 && (
                 collections.data.map((collection: ResponsesCollection) => (
                   <li key={collection.id}>
-                    <CollectionCard
-                      title={collection.name}
-                      owner={collection.user.name}
-                      countMedia={collection._count.media}
-                    />
+                    <CheckboxElement
+                      isChecked={currentIsCollectionSelected(collection.id)}
+                      {...register('collections')}
+                      label={collection.id}
+                      value={collection.id}
+                    >
+                      <CollectionCard
+                        title={collection.name}
+                        owner={collection.user.name}
+                        countMedia={collection._count.media}
+                      />
+                    </CheckboxElement>
                   </li>
                 ))
               )}
@@ -63,7 +95,7 @@ export function SetMediaCollectionModal({ visible, onClose }: SetMediaCollection
             </ListCollection>
 
             <div className="actions">
-              <Button>
+              <Button type="submit">
                 Adicionar
               </Button>
 
