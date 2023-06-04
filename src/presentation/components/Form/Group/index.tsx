@@ -7,7 +7,7 @@ export function FormGroup({ children, errorMessage }: FormGroupProps) {
   const [parent] = useAutoAnimate();
 
   return (
-    <Container ref={parent}>
+    <Container ref={parent} className="form-group">
       {children}
       {errorMessage && (
         <ErrorMessage>
