@@ -69,7 +69,7 @@ export function SignUpUI() {
             Cadastrar
           </Button>
 
-          <Link href="/sign-up" isoutline="true" schemacolor="softGray">
+          <Link href="/login" isoutline="true" schemacolor="softGray">
             Login
           </Link>
         </div>

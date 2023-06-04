@@ -7,7 +7,7 @@ export const Container = styled.section`
   margin: auto;
   justify-content: center;
   align-self: center;
-  margin-top: 32%;
+  margin-top: 12%;
 
   h1 {
     letter-spacing: 0.04em;
