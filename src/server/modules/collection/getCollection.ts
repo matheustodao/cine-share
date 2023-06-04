@@ -1,18 +1,35 @@
-import { Media, User } from '@prisma/client';
 import { prisma } from 'core/prisma';
-import { CollectionParams } from 'types/server/collection';
+import { ResponsesGetCollectionUseCase } from 'types/server/collection';
 
-type Response = CollectionParams & { media: Media[], user: Pick<User, 'name'> };
 export async function getCollectionUseCase(
   collectionId: string,
-): Promise<Response | null> {
+): Promise<ResponsesGetCollectionUseCase | null> {
   const collectionFound = await prisma.collection.findFirst({
     where: {
       id: collectionId,
     },
-    include: {
-      user: { select: { name: true } },
-      media: true,
+    select: {
+      _count: {
+        select: {
+          media: true,
+        },
+      },
+      id: true,
+      name: true,
+      description: true,
+      user: {
+        select: {
+          name: true,
+          id: true,
+        },
+      },
+      media: {
+        select: {
+          id: true,
+          tmdb_id: true,
+          collectionId: true,
+        },
+      },
     },
   });
 
