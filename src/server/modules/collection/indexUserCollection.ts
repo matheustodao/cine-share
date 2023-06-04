@@ -21,13 +21,7 @@ export async function indexUserCollectionUseCase(userId: string): Promise<Respon
           id: true,
         },
       },
-      media: {
-        select: {
-          id: true,
-          tmdb_id: true,
-          collectionId: true,
-        },
-      },
+      media: true,
     },
   });
 

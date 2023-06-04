@@ -15,6 +15,7 @@ export function Home() {
             media={item.data}
             loading={item.isLoading}
             link="/cine/movies"
+            media_type="movie"
           />
         </section>
       ))}
@@ -26,6 +27,7 @@ export function Home() {
             media={item.data}
             loading={item.isLoading}
             link="/cine/tv"
+            media_type="tv"
           />
         </section>
       ))}

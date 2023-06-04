@@ -36,4 +36,9 @@ export type ResponseTMDBArray<T = any[]> = {
   total_results: number
 };
 
-export interface ResponseTMDBMovie extends ResponseTMDBMovie<TMDBMovie[]> { }
+export interface TMDBMultiSearch extends TMDBMovie {
+  media_type: 'movie' | 'tv'
+}
+
+export interface ResponseTMDBMovie extends ResponseTMDBArray<TMDBMovie[]> { }
+export interface ResponseTMDBMultiSearch extends ResponseTMDBArray<TMDBMultiSearch[]> { }

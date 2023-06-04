@@ -23,13 +23,7 @@ export async function getCollectionUseCase(
           id: true,
         },
       },
-      media: {
-        select: {
-          id: true,
-          tmdb_id: true,
-          collectionId: true,
-        },
-      },
+      media: true,
     },
   });
 
