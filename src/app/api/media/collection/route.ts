@@ -4,11 +4,17 @@ import { setMediaInCollectionUseCase } from 'server/modules/media/setMediaInColl
 import { MediaParamsData } from 'types/server/media';
 
 export async function POST(req: Request) {
-  const { collectionId, tmdb_id, type }: MediaParamsData = await req.json();
+  const {
+    collectionId,
+    tmdb_id,
+    type,
+    original_language,
+    poster_path,
+  }: Omit<MediaParamsData, 'userId'> = await req.json();
 
-  if (!collectionId || !tmdb_id || !type) {
+  if (!collectionId || !tmdb_id || !type || !original_language || !poster_path) {
     return NextResponse.json({
-      error: 'collectionId, tmdb_id and type fields is missing',
+      error: 'collectionId, tmdb_id, original_language, poster_path and type fields is missing',
     }, { status: 400 });
   }
 
@@ -25,6 +31,8 @@ export async function POST(req: Request) {
     tmdb_id,
     type,
     userId,
+    original_language,
+    poster_path,
   });
 
   return NextResponse.json(movieData);

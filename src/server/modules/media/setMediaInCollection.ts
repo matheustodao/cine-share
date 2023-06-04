@@ -2,7 +2,7 @@ import { prisma } from 'core/prisma';
 import { MediaParams, MediaParamsData } from 'types/server/media';
 
 export async function setMediaInCollectionUseCase({
-  collectionId, tmdb_id, type, userId,
+  collectionId, tmdb_id, type, userId, original_language, poster_path,
 }: MediaParamsData): Promise<MediaParams> {
   const collection = await prisma.collection.findUnique({
     where: {
@@ -34,7 +34,13 @@ export async function setMediaInCollectionUseCase({
   }
 
   const setInCollection = await prisma.media.create({
-    data: { collectionId, tmdb_id, type },
+    data: {
+      collectionId,
+      tmdb_id,
+      type,
+      original_language,
+      poster_path,
+    },
   });
 
   return setInCollection;
