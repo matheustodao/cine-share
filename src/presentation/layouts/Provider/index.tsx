@@ -17,14 +17,14 @@ import 'swiper/css/navigation';
 const lato = Lato({
   subsets: ['latin'],
   variable: '--text-font',
-  fallback: ['sans serif'],
+  fallback: ['sans-serif'],
   weight: ['700', '400', '900'],
 });
 
 const sora = Sora({
   subsets: ['latin'],
   variable: '--title-font',
-  fallback: ['sans serif'],
+  fallback: ['sans-serif'],
   weight: ['700', '600', '500', '400'],
 });
 
