@@ -3,9 +3,9 @@ import { ButtonStyles } from 'types/presentation/button';
 import { buttonColors } from './variants/colors';
 
 export const ButtonStyled = styled.button<ButtonStyles>(({
-  theme, isoutline, schemaColor, loading,
+  theme, isoutline, schemacolor, loading,
 }) => css`
-  ${buttonColors[schemaColor ?? 'blue']};
+  ${buttonColors[schemacolor ?? 'blue']};
 
   display: flex;
   align-items: center;
@@ -23,14 +23,17 @@ export const ButtonStyled = styled.button<ButtonStyles>(({
 
   border-radius: ${theme.rounded.large};
 
+  text-decoration: none !important;
+
   cursor: pointer;
 
   transition: all 0.350s ease;
 
   ${isoutline === 'true' && css`
     background: transparent;
-    border: 1px solid var(--bg-colors);
-    color: var(--bg-colors);
+    border: 1px solid var(--bg-color);
+    border-color: var(--bg-color);
+    color: var(--bg-color);
   `}
 
   .content {

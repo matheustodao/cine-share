@@ -15,7 +15,7 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(({
       ref={elementRef}
       isoutline={outline ? 'true' : 'false'}
       loading={loading ? 'true' : 'false'}
-      schemaColor={schemaColor}
+      schemacolor={schemaColor}
       disabled={loading || props.disabled}
     >
       <div className="wrapper" ref={parent}>
