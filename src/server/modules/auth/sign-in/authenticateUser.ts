@@ -5,13 +5,13 @@ import { AuthParams, UserParams } from 'types/server/auth';
 export async function authenticateUserUseCase({
   email, password,
 }: AuthParams): Promise<UserParams | null> {
-  const existsUser = await prisma.user.findFirst({ where: { email } });
+  const existsUser = await prisma.user.findUnique({ where: { email } });
 
   if (!existsUser) {
     return null;
   }
 
-  const isValidPassword = crypt.compare(existsUser.password, password);
+  const isValidPassword = await crypt.compare(existsUser.password, password);
 
   if (!isValidPassword) {
     return null;
@@ -20,5 +20,5 @@ export async function authenticateUserUseCase({
   const userData = existsUser;
   userData.password = '';
 
-  return existsUser;
+  return userData;
 }
