@@ -26,6 +26,7 @@ enum MediaType {
 
 model Media {
   id                String     @id @default(auto()) @map("_id") @db.ObjectId
+  title             String
   tmdb_id           String
   type              MediaType
   original_language String
