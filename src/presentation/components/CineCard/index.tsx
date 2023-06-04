@@ -12,7 +12,7 @@ export function CineCard({ id, title, image }: CineCardProps) {
   return (
     <Container tabIndex={-1} role="group">
       <Content>
-        <button type="button" tabIndex={-1}>
+        <button type="button" tabIndex={0}>
           <Popcorn size={24} alt="Pipoca" />
         </button>
 
