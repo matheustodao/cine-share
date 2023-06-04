@@ -1,3 +1,9 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { X } from 'phosphor-react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+
 import { Button } from 'presentation/components/Button';
 import { FormGroup } from 'presentation/components/Form/Group';
 import { Input } from 'presentation/components/Form/Input';
@@ -5,17 +11,15 @@ import { Textarea } from 'presentation/components/Form/textarea';
 import { Overlay } from 'presentation/components/Overlay';
 import { Portal } from 'presentation/components/Portal';
 import { Title } from 'presentation/components/Typography/Title';
-
-import { zodResolver } from '@hookform/resolvers/zod';
-import { createCollection } from 'infra/services/collection/createCollection';
-import { X } from 'phosphor-react';
 import { SchemaCreateCollection, validationSchemaCreateCollection } from 'presentation/validations/collection/create';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+
+import { createCollection } from 'infra/services/collection/createCollection';
+
+import { CollectionModalCreateProps } from 'types/presentation/collection';
+
 import { Container, Form } from './styles';
 
-export function CollectionModalCreate() {
+export function CollectionModalCreate({ onClose, visible }: CollectionModalCreateProps) {
   const {
     register,
     formState: { isValid, errors },
@@ -34,11 +38,16 @@ export function CollectionModalCreate() {
 
       toast.success('Coleção foi criada');
       reset();
+      onClose();
     } catch {
       toast.success('Não está autenticado, faça login na plataforma');
     } finally {
       setLoading(false);
     }
+  }
+
+  if (!visible) {
+    return null;
   }
 
   return (
@@ -67,7 +76,7 @@ export function CollectionModalCreate() {
                   Criar Coleção
                 </Button>
 
-                <Button type="reset" outline schemaColor="softGray">
+                <Button type="reset" outline schemaColor="softGray" onClick={onClose}>
                   Cancelar
                 </Button>
               </div>

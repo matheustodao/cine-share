@@ -13,7 +13,6 @@ import { Link } from 'presentation/components/Link';
 import { Title } from 'presentation/components/Typography/Title';
 
 import { createUser } from 'infra/services/user/auth/signup/createUser';
-import { CollectionModalCreate } from 'presentation/components/Collection/Create';
 import { FormGroup } from 'presentation/components/Form/Group';
 import { SchemaSignUp, validationSchemaSignUp } from 'presentation/validations/auth/signup';
 import { Container, Form } from './styles';
@@ -51,7 +50,6 @@ export function SignUpUI() {
       <Title as="h1" size="xxl" weight="semi">
         Sign Up
       </Title>
-      <CollectionModalCreate />
 
       <Form onSubmit={handleSubmit(handleSignUp)} noValidate>
         <FormGroup errorMessage={errors?.name?.message}>
