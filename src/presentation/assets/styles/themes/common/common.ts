@@ -12,7 +12,7 @@ export const commonStyles = {
     },
 
     body: {
-      family: 'var(--body-font)',
+      family: 'var(--text-font)',
       weight: {
         regular: '400',
         light: '300',
