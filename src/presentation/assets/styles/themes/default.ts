@@ -16,6 +16,7 @@ export const defaultTheme = {
     bg: {
       app: '#241E39',
       content: '#2D205A',
+      card: '#251A4A',
     },
   },
 };
