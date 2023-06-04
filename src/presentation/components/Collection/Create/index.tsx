@@ -6,6 +6,7 @@ import { Overlay } from 'presentation/components/Overlay';
 import { Portal } from 'presentation/components/Portal';
 import { Title } from 'presentation/components/Typography/Title';
 
+import { X } from 'phosphor-react';
 import { Container, Form } from './styles';
 
 export function CollectionModalCreate() {
@@ -15,6 +16,9 @@ export function CollectionModalCreate() {
         <Container>
           <div className="header">
             <Title as="strong" size="medium">Criar coleção</Title>
+            <button type="button">
+              <X />
+            </button>
           </div>
 
           <div className="content">

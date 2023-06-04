@@ -11,6 +11,19 @@ export const Container = styled.div(({ theme }) => `
     padding-bottom: 1rem;
     margin-bottom: 4.2rem;
     border-bottom: 1px solid ${theme.colors.grey['300/30']};
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > button {
+      line-height: 0;
+      border-radius: 100%;
+      font-size: 2rem;
+      background: transparent;
+      padding: 0.8rem;
+      cursor: pointer;
+      color: ${theme.colors.white};
+    }
   }
 `);
 
