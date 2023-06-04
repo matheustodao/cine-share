@@ -57,7 +57,7 @@ export function CollectionModalCreate({ onClose, visible }: CollectionModalCreat
         <ModalContainerCollection>
           <div className="header">
             <Title as="strong" size="medium">Criar coleção</Title>
-            <button type="button">
+            <button type="button" onClick={onClose}>
               <X />
             </button>
           </div>

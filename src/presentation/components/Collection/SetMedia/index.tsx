@@ -6,17 +6,17 @@ import { Title } from 'presentation/components/Typography/Title';
 
 import { SetMediaCollectionModalProps } from 'types/presentation/collection';
 
-import { cineShareApi } from 'infra/api/cineShareApi';
 import { Button } from 'presentation/components/Button';
 import { Loader } from 'presentation/components/Loader';
-import { useQuery } from 'react-query';
+import { useSetMediaCollectionModalHandler } from 'presentation/handler/components/Collection/MediaModal';
 import { ResponsesCollection } from 'types/server/collection';
 import { CollectionCard } from '../Card';
+import { CollectionModalCreate } from '../Create';
 import { ModalContainerCollection } from '../styles/ModalContainer';
 import { Content, ListCollection } from './styles';
 
 export function SetMediaCollectionModal({ visible, onClose }: SetMediaCollectionModalProps) {
-  const { data, isLoading } = useQuery('collection-user-owner', () => cineShareApi.get('/collection/user'));
+  const { collections, createCollectionModal } = useSetMediaCollectionModalHandler();
 
   if (!visible) {
     return null;
@@ -24,21 +24,26 @@ export function SetMediaCollectionModal({ visible, onClose }: SetMediaCollection
 
   return (
     <Portal selector="add-media-collection-modal">
+      <CollectionModalCreate
+        onClose={createCollectionModal.onClose}
+        visible={createCollectionModal.isVisible}
+      />
+
       <Overlay>
         <ModalContainerCollection maxWidth="560px">
           <div className="header">
             <Title as="strong" size="medium">Adicione em uma coleção</Title>
+
             <button type="button" onClick={onClose}>
               <X />
             </button>
           </div>
 
           <Content>
-
             <ListCollection>
-              {isLoading && <Loader size={50} />}
-              {!isLoading && data?.data?.length > 0 && (
-                data?.data.map((collection: ResponsesCollection) => (
+              {collections.isLoading && <Loader size={50} />}
+              {!collections.isLoading && collections.data?.length > 0 && (
+                collections.data.map((collection: ResponsesCollection) => (
                   <li key={collection.id}>
                     <CollectionCard
                       title={collection.name}
@@ -48,7 +53,9 @@ export function SetMediaCollectionModal({ visible, onClose }: SetMediaCollection
                   </li>
                 ))
               )}
-              {!isLoading && data?.data?.length === 0 && (
+
+              {!collections.isLoading && collections.data?.length === 0 && (
+
               <Title as="span" schema={500}>
                 Não há nenhuma coleção cadastrada
               </Title>
@@ -60,7 +67,7 @@ export function SetMediaCollectionModal({ visible, onClose }: SetMediaCollection
                 Adicionar
               </Button>
 
-              <Button outline schemaColor="softGray">
+              <Button outline schemaColor="softGray" onClick={createCollectionModal.onOpen}>
                 Criar Coleção
               </Button>
             </div>
