@@ -4,13 +4,17 @@ import { useQuery } from 'react-query';
 
 export function useSetMediaCollectionModalHandler() {
   const [createCollectionModal, setCreateCollectionModal] = useState<boolean>(false);
-  const { data, isLoading } = useQuery('collection-user-owner', () => cineShareApi.get('/collection/user'));
+  const { data, isLoading, refetch } = useQuery('collection-user-owner', () => cineShareApi.get('/collection/user'), {
+    refetchOnMount: 'always',
+    enabled: false,
+  });
 
   function handleOpenCreateCollectionModal() {
     setCreateCollectionModal(true);
   }
 
   function handleCloseCreateCollectionModal() {
+    refetch();
     setCreateCollectionModal(false);
   }
 
