@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components';
 import { ButtonStyles } from 'types/presentation/button';
 import { buttonColors } from './variants/colors';
 
-export const ButtonStyled = styled.button<ButtonStyles>(({ theme, isoutline, schemaColor }) => css`
+export const ButtonStyled = styled.button<ButtonStyles>(({
+  theme, isoutline, schemaColor, loading,
+}) => css`
   ${buttonColors[schemaColor ?? 'blue']};
 
   display: flex;
@@ -31,9 +33,15 @@ export const ButtonStyled = styled.button<ButtonStyles>(({ theme, isoutline, sch
     color: var(--bg-colors);
   `}
 
+  .content {
+    display: ${loading === 'true' ? 'none' : 'inline'};
+  }
+
   :disabled, :focus-visible {
-    filter: brightness(0.9);
-    cursor: not-allowed;
+    &, :hover {
+      filter: brightness(0.8);
+      cursor: not-allowed;
+    }
   }
 
   :hover, :focus-visible {

@@ -6,9 +6,10 @@ import { IChildren } from '../core';
 export interface ButtonStyles {
   isoutline: StyledBooleanType
   schemaColor?: keyof typeof buttonColors
+  loading: StyledBooleanType
 }
 
-export interface IButtonProps extends Omit<ButtonStyles, 'isoutline'>, IChildren, ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends Omit<ButtonStyles, 'isoutline' | 'loading'>, IChildren, ButtonHTMLAttributes<HTMLButtonElement> {
   outline?: boolean
   loading?: boolean
 }
