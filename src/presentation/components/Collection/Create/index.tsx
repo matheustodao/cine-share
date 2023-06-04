@@ -17,7 +17,8 @@ import { createCollection } from 'infra/services/collection/createCollection';
 
 import { CollectionModalCreateProps } from 'types/presentation/collection';
 
-import { Container, Form } from './styles';
+import { ModalContainerCollection } from '../styles/ModalContainer';
+import { Form } from './styles';
 
 export function CollectionModalCreate({ onClose, visible }: CollectionModalCreateProps) {
   const {
@@ -53,7 +54,7 @@ export function CollectionModalCreate({ onClose, visible }: CollectionModalCreat
   return (
     <Portal selector="create-collection-modal">
       <Overlay>
-        <Container>
+        <ModalContainerCollection>
           <div className="header">
             <Title as="strong" size="medium">Criar coleção</Title>
             <button type="button">
@@ -82,7 +83,7 @@ export function CollectionModalCreate({ onClose, visible }: CollectionModalCreat
               </div>
             </Form>
           </div>
-        </Container>
+        </ModalContainerCollection>
       </Overlay>
     </Portal>
   );
