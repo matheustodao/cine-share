@@ -6,7 +6,7 @@ export function useSetMediaCollectionModalHandler() {
   const [createCollectionModal, setCreateCollectionModal] = useState<boolean>(false);
   const { data, isLoading, refetch } = useQuery('collection-user-owner', () => cineShareApi.get('/collection/user'), {
     refetchOnMount: 'always',
-    enabled: false,
+    cacheTime: 60 * 60 * 6,
   });
 
   function handleOpenCreateCollectionModal() {
