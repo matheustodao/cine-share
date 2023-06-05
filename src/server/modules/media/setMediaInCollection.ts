@@ -3,46 +3,56 @@ import { MediaParams, MediaParamsData } from 'types/server/media';
 
 export async function setMediaInCollectionUseCase({
   collectionId, tmdb_id, type, userId, original_language, poster_path, title,
-}: MediaParamsData): Promise<MediaParams> {
-  const collection = await prisma.collection.findUnique({
-    where: {
-      id: collectionId,
-    },
-    include: {
-      media: {
-        select: {
-          tmdb_id: true,
+}: MediaParamsData): Promise<MediaParams[]> {
+  const mediasAdded = [] as MediaParams[];
+  collectionId.forEach(async (currentId) => {
+    const collection = await prisma.collection.findUnique({
+      where: {
+        id: currentId,
+      },
+      include: {
+        media: true,
+      },
+    });
+
+    if (!collection) return;
+
+    if (collection?.userId !== userId) {
+      throw new Error('Você não tem acesso a essa coleção');
+    }
+
+    const alreadyExistsMedia = await prisma.collection.findFirst({
+      where: {
+        AND: {
+          id: {
+            equals: currentId,
+          },
+          media: {
+            some: {
+              tmdb_id: String(tmdb_id),
+            },
+          },
         },
       },
-    },
-  });
+    });
 
-  if (!collection) {
-    throw new Error('Not found collection with this id');
-  }
+    if (alreadyExistsMedia) return;
 
-  if (collection.userId !== userId) {
-    throw new Error('You not have access in this collection');
-  }
-
-  const alreadyExistsMedia = collection.media.findIndex(
-    (currentMedia) => currentMedia.tmdb_id === tmdb_id,
-  );
-
-  if (alreadyExistsMedia) {
-    throw new Error('This media already registered');
-  }
-
-  const setInCollection = await prisma.media.create({
-    data: {
-      collectionId,
-      tmdb_id,
+    const createMediaData = {
+      tmdb_id: String(tmdb_id),
       type,
       original_language,
       poster_path,
       title,
-    },
+      collectionId: currentId,
+    };
+
+    const setInCollection = await prisma.media.create({
+      data: createMediaData,
+    });
+
+    mediasAdded.push(setInCollection);
   });
 
-  return setInCollection;
+  return mediasAdded;
 }

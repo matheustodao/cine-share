@@ -30,7 +30,7 @@ export interface TMDBMovie {
 }
 
 export type ResponseTMDBArray<T = any[]> = {
-  results: T,
+  results: T[],
   page: number,
   total_pages: number,
   total_results: number
@@ -40,5 +40,12 @@ export interface TMDBMultiSearch extends TMDBMovie {
   media_type: 'movie' | 'tv'
 }
 
-export interface ResponseTMDBMovie extends ResponseTMDBArray<TMDBMovie[]> { }
-export interface ResponseTMDBMultiSearch extends ResponseTMDBArray<TMDBMultiSearch[]> { }
+export interface TMDBTv extends Omit<TMDBMovie, 'title'> {
+  name: string
+}
+
+type TMDBMedia = TMDBMovie & TMDBTv & TMDBMultiSearch;
+
+export interface ResponseTMDBMovie extends ResponseTMDBArray<TMDBMovie> { }
+export interface ResponseTMDBMultiSearch extends ResponseTMDBArray<TMDBMultiSearch> { }
+export interface ResponseTMDBTv extends ResponseTMDBArray<TMDBTv> { }

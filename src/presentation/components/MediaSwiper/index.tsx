@@ -46,9 +46,8 @@ export function MediaSwiper({
             <CineCard
               id={item.id}
               image={item.poster_path}
-              title={item.title}
+              title={item?.title ?? item?.name}
               original_language={item.original_language}
-              // @ts-ignore
               type={item?.media_type ?? media_type}
             />
           </SwiperSlide>

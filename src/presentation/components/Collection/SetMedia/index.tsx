@@ -7,11 +7,14 @@ import { Title } from 'presentation/components/Typography/Title';
 import { SetMediaCollectionModalProps } from 'types/presentation/collection';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { cineShareApi } from 'infra/api/cineShareApi';
 import { Button } from 'presentation/components/Button';
 import { Loader } from 'presentation/components/Loader';
 import { useSetMediaCollectionModalHandler } from 'presentation/handler/components/Collection/MediaModal';
 import { SchemaSetMediaIntoCollection, validationSchemaSetMediaIntoCollection } from 'presentation/validations/collection/setMedia';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { ResponsesCollection } from 'types/server/collection';
 import { CollectionCard } from '../Card';
 import { CollectionModalCreate } from '../Create';
@@ -19,20 +22,36 @@ import { ModalContainerCollection } from '../styles/ModalContainer';
 import { CheckboxElement } from './components/CheckboxElement';
 import { Content, ListCollection } from './styles';
 
-export function SetMediaCollectionModal({ visible, onClose }: SetMediaCollectionModalProps) {
-  const { collections, createCollectionModal } = useSetMediaCollectionModalHandler();
-  const { register, watch, handleSubmit } = useForm<SchemaSetMediaIntoCollection>({
+export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCollectionModalProps) {
+  const { collections, createCollectionModal } = useSetMediaCollectionModalHandler(visible);
+  const {
+    register, watch, handleSubmit, reset,
+  } = useForm<SchemaSetMediaIntoCollection>({
     resolver: zodResolver(validationSchemaSetMediaIntoCollection),
   });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const collectionsSelected = watch('collections');
+  const collectionsSelected = watch('collections', []);
 
-  function setMediaIntoCollections(data: SchemaSetMediaIntoCollection) {
-    console.log({ data });
+  async function setMediaIntoCollections(data: SchemaSetMediaIntoCollection) {
+    try {
+      setIsLoading(true);
+
+      await cineShareApi.post('/media/collection', {
+        ...media,
+        collectionId: data.collections,
+      });
+
+      onClose();
+      toast.success('Adicionado com sucesso!');
+    } finally {
+      setIsLoading(false);
+      reset();
+    }
   }
 
   function currentIsCollectionSelected(collectionId: string) {
-    if (collectionsSelected?.length === 0 || typeof collectionsSelected === 'undefined') {
+    if (collectionsSelected?.length === 0 || typeof collectionsSelected === 'undefined' || !Array.isArray(collectionsSelected)) {
       return true;
     }
 
@@ -95,7 +114,7 @@ export function SetMediaCollectionModal({ visible, onClose }: SetMediaCollection
             </ListCollection>
 
             <div className="actions">
-              <Button type="submit">
+              <Button type="submit" loading={isLoading}>
                 Adicionar
               </Button>
 

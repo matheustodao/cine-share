@@ -42,7 +42,7 @@ export function CineCard({
           <Popcorn size={24} alt="Pipoca" />
         </button>
 
-        <Link href={`/cine/${id}`} role="navigation">
+        <Link href={`/cine/${id}`} role="navigation" title={`${title} nome`}>
           <WrapperImage>
             <Image
               src={`${tmdbConfigs.imageUri}/w220_and_h330_face/${image}`}

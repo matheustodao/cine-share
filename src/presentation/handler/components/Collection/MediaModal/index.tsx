@@ -1,13 +1,19 @@
 import { cineShareApi } from 'infra/api/cineShareApi';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
-export function useSetMediaCollectionModalHandler() {
+export function useSetMediaCollectionModalHandler(visible: boolean) {
   const [createCollectionModal, setCreateCollectionModal] = useState<boolean>(false);
   const { data, isLoading, refetch } = useQuery('collection-user-owner', () => cineShareApi.get('/collection/user'), {
     refetchOnMount: 'always',
-    cacheTime: 60 * 60 * 6,
+    refetchOnWindowFocus: 'always',
   });
+
+  const onRefetchCollection = useCallback(() => {
+    if (visible) {
+      refetch();
+    }
+  }, [visible, refetch]);
 
   function handleOpenCreateCollectionModal() {
     setCreateCollectionModal(true);
@@ -17,6 +23,10 @@ export function useSetMediaCollectionModalHandler() {
     refetch();
     setCreateCollectionModal(false);
   }
+
+  useEffect(() => {
+    onRefetchCollection();
+  }, [onRefetchCollection]);
 
   return {
     createCollectionModal: {
