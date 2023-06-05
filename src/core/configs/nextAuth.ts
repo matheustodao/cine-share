@@ -6,7 +6,7 @@ export const nextAuthConfigs = {
   },
 
   cookies: {
-    sessionToken: `${NODE_ENV === 'production' ? '__Secure-' : ''}next-auth.session-token`,
-    csrfToken: `${NODE_ENV === 'production' ? '__Secure-' : ''}next-auth.csrf-token`,
+    sessionToken: `${NODE_ENV === 'production' ? '__Host-' : ''}next-auth.session-token`,
+    csrfToken: `${NODE_ENV === 'production' ? '__Host-' : ''}next-auth.csrf-token`,
   },
 };
