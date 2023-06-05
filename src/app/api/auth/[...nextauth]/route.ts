@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+import { VERCEL_URL } from 'core/configs/env';
 import { nextAuthConfigs } from 'core/configs/nextAuth';
 import NextAuth, { type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -73,6 +74,14 @@ export const authOptions: NextAuthOptions = NextAuth({
   },
   session: {
     strategy: 'jwt',
+  },
+  cookies: {
+    sessionToken: {
+      name: nextAuthConfigs.cookies.sessionToken,
+      options: {
+        domain: VERCEL_URL ? 'vercel.app' : undefined,
+      },
+    },
   },
 });
 
