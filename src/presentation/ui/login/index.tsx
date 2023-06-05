@@ -12,8 +12,6 @@ import { Input } from 'presentation/components/Form/Input';
 import { Link } from 'presentation/components/Link';
 import { Title } from 'presentation/components/Typography/Title';
 
-import { NEXTAUTH_URL } from 'core/configs/env';
-import { nextAuthConfigs } from 'core/configs/nextAuth';
 import { FormGroup } from 'presentation/components/Form/Group';
 import { SchemaLogin, validationSchemaLogin } from 'presentation/validations/auth/login';
 import { Container, Form } from './styles';
@@ -25,8 +23,6 @@ export function LoginUI() {
     mode: 'onBlur',
   });
   const [loading, setLoading] = useState(false);
-
-  console.log(NEXTAUTH_URL, nextAuthConfigs.cookies.sessionToken);
 
   async function handleSignIn(data: SchemaLogin) {
     try {

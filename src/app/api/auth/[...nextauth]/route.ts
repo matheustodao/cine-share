@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+import { SECRET_JWT } from 'core/configs/env';
 import { nextAuthConfigs } from 'core/configs/nextAuth';
 import NextAuth, { type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -74,6 +75,7 @@ export const authOptions: NextAuthOptions = NextAuth({
   session: {
     strategy: 'jwt',
   },
+  secret: SECRET_JWT,
 });
 
 export { authOptions as GET, authOptions as POST };
