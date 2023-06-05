@@ -29,6 +29,8 @@
     "class-methods-use-this": "off",
     "react/jsx-key": "error",
     "consistent-return": "off",
-    "@typescript-eslint/naming-convention": "off"
+    "@typescript-eslint/naming-convention": "off",
+    "react/jsx-no-bind": "off",
+    "no-underscore-dangle": "off"
   }
 }

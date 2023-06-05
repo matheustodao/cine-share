@@ -30,7 +30,7 @@ export const navRoutes: NavRoute[] = [
   },
 
   {
-    link: '/sign-in',
+    link: '/login',
     label: 'Login',
     role: ['all'],
     active: false,

@@ -2,6 +2,7 @@ export const defaultTheme = {
   colors: {
     grey: {
       300: '#BDBDBD',
+      200: '#CCCCCC',
       '300/30': 'rgba(217, 217, 217, .3)',
     },
 
@@ -15,6 +16,7 @@ export const defaultTheme = {
     bg: {
       app: '#241E39',
       content: '#2D205A',
+      card: '#251A4A',
     },
   },
 };

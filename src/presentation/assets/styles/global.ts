@@ -8,6 +8,8 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
     outline: none;
     border: none;
 
+    transition: all 160ms ease;
+
     ::-webkit-scrollbar {
       width: 0.2rem;
     }
@@ -34,8 +36,8 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
     }
 
     :focus-visible {
-      outline: thin auto;
-      outline-offset: 1rem;
+      outline: thin solid ${theme.colors.grey['300/30']};
+      outline-offset: 0.2rem;
     }
   }
 

@@ -2,6 +2,8 @@ import { parsedQuery } from 'core/parsedQuery';
 import { NextResponse } from 'next/server';
 import { getTvShowsUseCase } from 'server/modules/media/getTvShows';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: Request) {
   const query = parsedQuery(req.url);
 

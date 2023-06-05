@@ -13,7 +13,7 @@ import { MediaSwiperList } from './components/MediaSwiperList';
 import { Container } from './styles';
 
 export function MediaSwiper({
-  title, link, media, loading,
+  title, link, media, loading, media_type,
 }: MediaSwiperProps) {
   const router = useRouter();
 
@@ -46,7 +46,9 @@ export function MediaSwiper({
             <CineCard
               id={item.id}
               image={item.poster_path}
-              title={item.title}
+              title={item?.title ?? item?.name}
+              original_language={item.original_language}
+              type={item?.media_type ?? media_type}
             />
           </SwiperSlide>
         ))}

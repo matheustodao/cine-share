@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
-import { TMDBMovie } from 'types/server/tmdb';
+import { TMDBMedia } from 'types/server/tmdb';
 
 export interface MediaSwiperProps {
   title: string,
   link: string,
-  media: TMDBMovie[],
+  media: TMDBMedia[],
   loading?: boolean,
+  media_type: TMDBMedia['media_type']
 }
 
 export interface MediaSwiperListProps {

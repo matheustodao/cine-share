@@ -4,6 +4,10 @@ const nextConfig = {
     styledComponents: true
   },
 
+  experimental: {
+    serverActions: true
+  },
+
   images: {
     remotePatterns: [
       {

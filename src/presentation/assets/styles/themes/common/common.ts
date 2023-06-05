@@ -12,7 +12,7 @@ export const commonStyles = {
     },
 
     body: {
-      family: 'var(--body-font)',
+      family: 'var(--text-font)',
       weight: {
         regular: '400',
         light: '300',
@@ -76,6 +76,7 @@ export const commonStyles = {
 
     whiteAlpha: {
       900: '#FFFFFF',
+      700: 'rgba(255, 255, 255, 0.8)',
     },
 
     brand: brandColor,
