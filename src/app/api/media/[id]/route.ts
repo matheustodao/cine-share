@@ -2,6 +2,8 @@ import { getUserId } from 'core/getUserId';
 import { NextResponse } from 'next/server';
 import { deleteMediaCollectionUseCase } from 'server/modules/media/deleteMediaCollection';
 
+export const dynamic = 'force-dynamic';
+
 export async function DELETE(req: Request, ctx: any) {
   const { id, collectionId } = ctx.params;
 
