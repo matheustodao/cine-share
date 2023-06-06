@@ -20,6 +20,7 @@ export async function getCollectionUseCase(
       user: {
         select: {
           name: true,
+          email: true,
           id: true,
         },
       },
