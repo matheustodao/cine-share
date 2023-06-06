@@ -28,7 +28,7 @@ export interface CollectionViewCommonProps {
 }
 
 export interface CollectionUIProps {
-  collection: ResponsesCollection | null
+  collection: ResponsesCollection | null | undefined
 }
 
 export interface CollectionUIHeaderProps extends CollectionViewCommonProps {
