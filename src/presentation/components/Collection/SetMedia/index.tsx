@@ -39,7 +39,7 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
 
       await cineShareApi.post('/media/collection', {
         ...media,
-        collectionId: data.collections,
+        collectionId: typeof data.collections === 'string' ? [data.collections] : data.collections,
       });
 
       onClose();
@@ -51,7 +51,17 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
   }
 
   function currentIsCollectionSelected(collectionId: string) {
-    if (collectionsSelected?.length === 0 || typeof collectionsSelected === 'undefined' || !Array.isArray(collectionsSelected)) {
+    if (typeof collectionsSelected === 'string' || typeof collectionsSelected === 'boolean') {
+      const isSelected = collectionId === collectionsSelected;
+
+      return isSelected;
+    }
+
+    if (
+      collectionsSelected?.length === 0
+      || typeof collectionsSelected === 'undefined'
+      || !Array.isArray(collectionsSelected)
+    ) {
       return true;
     }
 
@@ -60,6 +70,11 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
     ));
 
     return isSelectedCollection === -1;
+  }
+
+  function handleClose() {
+    reset();
+    onClose();
   }
 
   if (!visible) {
@@ -78,7 +93,7 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
           <div className="header">
             <Title as="strong" size="medium">Adicione em uma coleção</Title>
 
-            <button type="button" onClick={onClose}>
+            <button type="button" onClick={handleClose}>
               <X />
             </button>
           </div>
@@ -118,7 +133,7 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
                 Adicionar
               </Button>
 
-              <Button outline schemaColor="softGray" onClick={createCollectionModal.onOpen}>
+              <Button type="button" outline schemaColor="softGray" onClick={createCollectionModal.onOpen}>
                 Criar Coleção
               </Button>
             </div>

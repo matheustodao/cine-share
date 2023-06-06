@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.label<{ check: 'true' | 'false' }>(({ theme, check }) => `
-  --border-color: ${check === 'false' ? theme.colors.brand[300] : 'transparent'};
+  --border-color: ${check === 'true' ? theme.colors.brand[300] : 'transparent'};
   border: 1px solid;
   border-color: var(--border-color);
   cursor: pointer;
