@@ -25,4 +25,16 @@ export const ModalContainerCollection = styled.div<{ maxWidth?: string }>(({ the
       color: ${theme.colors.white};
     }
   }
+
+  @media (max-width: 745px) {
+    max-width: 90%;
+
+    .actions {
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      > button {
+        width: 100%;
+      }
+    }
+  }
 `);
