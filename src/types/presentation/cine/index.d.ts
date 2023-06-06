@@ -15,9 +15,3 @@ export interface CineCardLoaderProps {
   count?: number,
   wrapper?: SkeletonProps['wrapper']
 }
-
-export interface CineCollectionCardProps {
-  title: string
-  image: string
-  id: string
-}
