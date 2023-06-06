@@ -4,9 +4,9 @@ export const Container = styled.footer(({ theme }) => `
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3.2rem;
+  gap: 1.2rem;
   position: fixed;
-  bottom: 4.2rem;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;

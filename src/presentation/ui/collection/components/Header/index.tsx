@@ -4,26 +4,38 @@ import { Pencil } from 'phosphor-react';
 import { Text } from 'presentation/components/Typography/Text';
 import { Title } from 'presentation/components/Typography/Title';
 
+import { useSession } from 'next-auth/react';
+import { CollectionUIHeaderProps } from 'types/presentation/collection';
 import * as Root from './styles';
 
-export function CollectionHeader() {
+export function CollectionHeader({
+  userEmail,
+  name,
+  description,
+}: CollectionUIHeaderProps) {
+  const { status, data } = useSession();
+
   return (
     <Root.Container>
       <div className="info">
         <div>
           <Title as="h1" size="xl" weight="semi">
-            Top 100 filmes
+            {name}
           </Title>
         </div>
 
-        <button type="button">
-          <Pencil size={24} color="#fff" />
-        </button>
+        {(status === 'authenticated' && userEmail === data?.user?.email) && (
+          <button type="button">
+            <Pencil size={24} color="#fff" />
+          </button>
+        )}
       </div>
 
-      <Text as="p" weight="xlight" schema={500}>
-        As minhas recomendações de filmes de 2022 e 2023.
-      </Text>
+      {description && (
+        <Text as="p" weight="xlight" schema={500}>
+          {description}
+        </Text>
+      )}
     </Root.Container>
   );
 }
