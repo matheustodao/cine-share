@@ -6,7 +6,7 @@ export const Nav = styled.header`
 
 export const Container = styled.div(({ theme }) => `
   width: 100%;
-  min-height: 100vh;
+  min-height: 96vh;
   background: ${theme.colors.bg.app};
   display: flex;
   flex-direction: column;
