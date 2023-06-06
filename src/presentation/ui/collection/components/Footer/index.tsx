@@ -19,7 +19,8 @@ export function CollectionFooter({
         Compartilhar
       </Button>
 
-      {(status === 'authenticated' && userEmail === data?.user?.email) && (
+      {/* TODO add feature to delete collection  */}
+      {(status === 'authenticated' && userEmail === data?.user?.email && false) && (
         <Button schemaColor="red" aria-label="apagar coleção">
           <Trash size={24} />
         </Button>

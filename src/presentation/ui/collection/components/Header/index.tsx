@@ -24,7 +24,8 @@ export function CollectionHeader({
           </Title>
         </div>
 
-        {(status === 'authenticated' && userEmail === data?.user?.email) && (
+        {/* TODO add feature to edit collection */}
+        {(status === 'authenticated' && userEmail === data?.user?.email && false) && (
           <button type="button">
             <Pencil size={24} color="#fff" />
           </button>
