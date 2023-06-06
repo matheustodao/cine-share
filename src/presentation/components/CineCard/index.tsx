@@ -11,7 +11,7 @@ import { SetMediaCollectionModal } from '../Collection/SetMedia';
 import { Container, Content, WrapperImage } from './styles';
 
 export function CineCard({
-  id, title, image, original_language, type,
+  id, title, image, original_language, type, cardSize,
 }: CineCardProps) {
   const {
     addMediaCollectionModal,
@@ -42,13 +42,13 @@ export function CineCard({
           <Popcorn size={24} alt="Pipoca" />
         </button>
 
-        <Link href={`/cine/${id}`} role="navigation" title={`${title} nome`}>
-          <WrapperImage>
+        <Link href={`/cine/${id}`} role="navigation" title={`${title}`}>
+          <WrapperImage size={cardSize}>
             <Image
               src={`${tmdbConfigs.imageUri}/w220_and_h330_face/${image}`}
               alt={`${title} banner`}
               fill
-              sizes="220px"
+              sizes="(max-width: 2848px) 220px"
             />
           </WrapperImage>
         </Link>
