@@ -4,6 +4,10 @@ import { ResponsesCollection } from 'types/server/collection';
 
 export async function getCollectionById(
   collectionId: string,
-): Promise<AxiosResponse<ResponsesCollection | null>> {
-  return cineShareApi.get(`/collection/${collectionId}`);
+): Promise<AxiosResponse<ResponsesCollection> | null> {
+  try {
+    return await cineShareApi.get(`/collection/${collectionId}`);
+  } catch {
+    return null;
+  }
 }
