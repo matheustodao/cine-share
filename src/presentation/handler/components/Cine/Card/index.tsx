@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 export function useCineCardHandler() {
   const [addMediaCollectionModal, setAddMediaCollectionModal] = useState<boolean>(false);
-  const { status } = useSession();
+  const { status, data } = useSession();
   const router = useRouter();
 
   function handleOpenAddMediaCollectionModal() {
@@ -26,5 +26,9 @@ export function useCineCardHandler() {
     addMediaCollectionModal,
     handleOpenAddMediaCollectionModal,
     handleCloseAddMediaCollectionModal,
+    session: {
+      status,
+      userEmail: data?.user?.email,
+    },
   };
 }

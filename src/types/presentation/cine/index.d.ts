@@ -9,6 +9,7 @@ export interface CineCardProps {
   original_language: string
   type: MediaType
   cardSize?: WrapperImageProps['size']
+  userEmail?: string | null
 }
 
 export interface CineCardLoaderProps {
