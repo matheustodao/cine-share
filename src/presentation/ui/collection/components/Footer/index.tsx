@@ -5,6 +5,8 @@ import { Share, Trash } from 'phosphor-react';
 import { Button } from 'presentation/components/Button';
 import { CollectionUIFooterProps } from 'types/presentation/collection';
 
+import { RWebShare } from 'react-web-share';
+
 import * as Root from './sytles';
 
 export function CollectionFooter({
@@ -14,10 +16,16 @@ export function CollectionFooter({
 
   return (
     <Root.Container>
-      <Button>
-        <Share size={24} />
-        Compartilhar
-      </Button>
+      <RWebShare
+        data={{
+          title: 'Dê uma olhada nessas recomendações imperdíveis para assistir º CineShare',
+        }}
+      >
+        <Button>
+          <Share size={24} />
+          Compartilhar
+        </Button>
+      </RWebShare>
 
       {/* TODO add feature to delete collection  */}
       {(status === 'authenticated' && userEmail === data?.user?.email && false) && (
