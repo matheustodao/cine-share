@@ -13,6 +13,7 @@ export const ButtonStyled = styled.button<ButtonStyles>(({
   padding: 1.6rem 2.4rem;
   background: var(--bg-color);
   color: var(--text-color);
+  position: relative;
 
   border: none;
 
