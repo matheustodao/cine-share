@@ -10,6 +10,7 @@ export interface CineCardProps {
   type: MediaType
   cardSize?: WrapperImageProps['size']
   userEmail?: string | null
+  onDelete?: () => void
 }
 
 export interface CineCardLoaderProps {

@@ -12,7 +12,7 @@ import { SetMediaCollectionModal } from '../Collection/SetMedia';
 import { Container, Content, WrapperImage } from './styles';
 
 export function CineCard({
-  id, title, image, original_language, type, cardSize, userEmail,
+  id, title, image, original_language, type, cardSize, userEmail, onDelete,
 }: CineCardProps) {
   const {
     addMediaCollectionModal,
@@ -22,8 +22,8 @@ export function CineCard({
   } = useCineCardHandler();
 
   function handleButtonAction() {
-    if (userEmail === session.userEmail && session.status === 'authenticated') {
-      return console.log('Deletar');
+    if (userEmail === session.userEmail && session.status === 'authenticated' && onDelete) {
+      return onDelete();
     }
 
     handleOpenAddMediaCollectionModal();
