@@ -2,8 +2,10 @@ import { X } from '@phosphor-icons/react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Text } from 'presentation/components/Typography/Text';
 import { useNavHandler } from 'presentation/handler/components/Nav';
+import { useCallback, useEffect } from 'react';
 import { NavigationProps } from 'types/presentation/nav';
 import { Portal } from '../Portal';
 import {
@@ -15,6 +17,16 @@ import {
 
 export function Navigation({ onClose, shown }: NavigationProps) {
   const { routesDynamicProtected } = useNavHandler();
+  const pathname = usePathname();
+
+  const listenerPathnameChange = useCallback(() => {
+    onClose();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+
+  useEffect(() => {
+    listenerPathnameChange();
+  }, [listenerPathnameChange]);
 
   if (!shown) return null;
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { List, MagnifyingGlass } from '@phosphor-icons/react';
 import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
