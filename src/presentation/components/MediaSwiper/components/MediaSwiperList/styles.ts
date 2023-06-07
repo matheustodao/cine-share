@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const Content = styled.div(({ theme }) => `
   .swiper {
-    padding-top: 2.4rem;
-    padding-bottom: 2.4rem;
+    padding: 2.4rem 1.2rem;
 
     .swiper-slide {
       width: auto;

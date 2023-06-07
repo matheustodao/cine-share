@@ -1,11 +1,36 @@
 'use client';
 
 import { MediaSwiper } from 'presentation/components/MediaSwiper';
+import { useHomeHandler } from 'presentation/handler/ui/Home';
 
 export function Home() {
+  const { queries } = useHomeHandler();
+
   return (
-    <section>
-      <MediaSwiper title="Filmes em lançamentos" link="/cine/movies" media={[]} loading />
-    </section>
+    <>
+      {queries.movies.map((item) => (
+        <section key={item.title}>
+          <MediaSwiper
+            title={item.title}
+            media={item.data}
+            loading={item.isLoading}
+            link="/cine/movies"
+            media_type="movie"
+          />
+        </section>
+      ))}
+
+      {queries.tvShows.map((item) => (
+        <section key={item.title}>
+          <MediaSwiper
+            title={item.title}
+            media={item.data}
+            loading={item.isLoading}
+            link="/cine/tv"
+            media_type="tv"
+          />
+        </section>
+      ))}
+    </>
   );
 }

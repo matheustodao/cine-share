@@ -14,8 +14,8 @@ export function MediaSwiperLoader() {
           </div>
 
           <MediaSwiperList>
-            {Array.from({ length: 20 }).map(() => (
-              <SwiperSlide>
+            {Array.from({ length: 20 }).map((_, index) => (
+              <SwiperSlide key={index}>
                 <CineCardLoader />
               </SwiperSlide>
             ))}

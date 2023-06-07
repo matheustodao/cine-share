@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
-import { CineCardProps } from 'types/presentation/cine';
+import { TMDBMedia } from 'types/server/tmdb';
 
 export interface MediaSwiperProps {
   title: string,
   link: string,
-  media: CineCardProps[],
+  media: TMDBMedia[],
   loading?: boolean,
+  media_type: TMDBMedia['media_type']
 }
 
 export interface MediaSwiperListProps {
