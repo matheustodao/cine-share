@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-interface WrapperImageProps {
+export interface WrapperImageProps {
   size?: 'large' | 'normal' | 'small'
 }
 
@@ -37,6 +37,7 @@ export const Container = styled.div(({ theme }) => `
 
 export const Content = styled.div(({ theme }) => `
   position: relative;
+  flex: 1 10.7rem 1;
 
   > button {
     position: absolute;
@@ -63,6 +64,7 @@ export const WrapperImage = styled.div<WrapperImageProps>(({ theme, size = 'norm
 
   img {
     border-radius: ${theme.rounded.small};
+    max-width: 23rem;
   }
 
   @media (min-width: 1100px) {

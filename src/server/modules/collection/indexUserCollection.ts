@@ -18,6 +18,7 @@ export async function indexUserCollectionUseCase(userId: string): Promise<Respon
       user: {
         select: {
           name: true,
+          email: true,
           id: true,
         },
       },

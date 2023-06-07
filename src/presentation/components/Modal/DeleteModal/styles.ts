@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const ModalContainerCollection = styled.div<{ maxWidth?: string }>(({ theme, maxWidth }) => `
-  max-width: ${maxWidth || '50vw'};
+export const Container = styled.div<{ maxWidth?: string }>(({ theme, maxWidth }) => `
+  max-width: ${maxWidth || '70%'};
   background: ${theme.colors.bg.content};
   border-radius: ${theme.rounded.medium};
   width: 100%;
@@ -26,10 +26,16 @@ export const ModalContainerCollection = styled.div<{ maxWidth?: string }>(({ the
     }
   }
 
+  .actions {
+    display: flex;
+    gap: 1.6rem;
+  }
+
   @media (max-width: 745px) {
     max-width: 90%;
 
     .actions {
+      display: flex;
       flex-wrap: wrap;
       gap: 1.4rem;
       > button {

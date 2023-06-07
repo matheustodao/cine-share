@@ -6,14 +6,14 @@ export const ButtonStyled = styled.button<ButtonStyles>(({
   theme, isoutline, schemacolor, loading,
 }) => css`
   ${buttonColors[schemacolor ?? 'blue']};
-
   display: flex;
   align-items: center;
   justify-content: center;
-
+  flex-direction: row;
   padding: 1.6rem 2.4rem;
   background: var(--bg-color);
   color: var(--text-color);
+  position: relative;
 
   border: none;
 
@@ -21,13 +21,13 @@ export const ButtonStyled = styled.button<ButtonStyles>(({
   font-weight: ${theme.fonts.title.weight.bold};
   font-size: 1.5rem;
 
-  border-radius: ${theme.rounded.large};
+  border-radius: ${theme.rounded.medium};
 
   text-decoration: none !important;
 
   cursor: pointer;
 
-  transition: all 0.350s ease;
+  transition: all 0.350s ease-in;
 
   ${isoutline === 'true' && css`
     background: transparent;
@@ -37,7 +37,11 @@ export const ButtonStyled = styled.button<ButtonStyles>(({
   `}
 
   .content {
-    display: ${loading === 'true' ? 'none' : 'inline'};
+    display: ${loading === 'true' ? 'none' : 'flex'};
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0.8rem;
   }
 
   :disabled, :focus-visible {
@@ -48,6 +52,10 @@ export const ButtonStyled = styled.button<ButtonStyles>(({
   }
 
   :hover, :focus-visible {
-    filter: brightness(1.02);
+    filter: brightness(1.1);
+  }
+
+  :active {
+    filter: brightness(0.9);
   }
 `);

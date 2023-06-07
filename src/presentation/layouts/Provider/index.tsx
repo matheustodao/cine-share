@@ -18,7 +18,10 @@ import 'swiper/css/navigation';
 
 export function Provider({ children, session }: IProviderProps) {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider
+      session={session}
+      refetchOnWindowFocus
+    >
       <AuthContextProvider>
         <ThemeProvider theme={DEFAULT_THEME}>
           <QueryClientProvider client={queryClient}>

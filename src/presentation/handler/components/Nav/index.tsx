@@ -1,41 +1,48 @@
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
+import { useSession } from 'next-auth/react';
 import { NavRoute, RouteRoleType } from 'types/presentation/nav';
 import { navRoutes } from './routes';
 
 export function useNavHandler() {
-  const [routes, setRoutes] = useState(navRoutes as NavRoute[]);
+  const [routes] = useState(navRoutes as NavRoute[]);
   const [routesDynamicProtected, setRoutesDynamicProtected] = useState([] as NavRoute[]);
   const pathname = usePathname();
+  const { status } = useSession();
 
-  const settingRouteActive = useCallback(() => {
-    setRoutes((oldRoutes) => {
-      const path = pathname.length !== 1
-        ? pathname.split('/').at(1)
-        : pathname;
+  const settingRouteActive = useCallback((oldRoutes: NavRoute[]) => {
+    const routeActive = oldRoutes.find((currentRoute) => (
+      currentRoute.link.startsWith(pathname)
+    ));
 
-      const routeActive = oldRoutes.find((currentRoute) => (
-        currentRoute.link === path
-      ));
+    if (!routeActive) {
+      return oldRoutes;
+    }
 
-      if (!routeActive) {
-        return oldRoutes;
-      }
+    const oldRouteActive = oldRoutes.findIndex(((item) => (
+      item.active === true
+    )));
 
-      const routeIndex = oldRoutes.findIndex(((item) => (
-        item.link === routeActive.link && item.label === routeActive.label
-      )));
+    console.log({ oldRouteActive });
 
-      const newRoutes = oldRoutes;
+    const routeIndex = oldRoutes.findIndex(((item) => (
+      item.link === routeActive.link && item.label === routeActive.label
+    )));
 
-      newRoutes[routeIndex] = {
-        ...routeActive,
-        active: true,
-      };
+    const newRoutes = oldRoutes;
 
-      return newRoutes;
-    });
+    newRoutes[oldRouteActive] = {
+      ...newRoutes[oldRouteActive],
+      active: false,
+    };
+
+    newRoutes[routeIndex] = {
+      ...routeActive,
+      active: true,
+    };
+
+    return newRoutes;
   }, [pathname]);
 
   const mergeRoutes = (...roles: RouteRoleType[]) => {
@@ -52,7 +59,9 @@ export function useNavHandler() {
     return hasPermission;
   }
 
-  const settingRoutesDynamicProtected = useCallback((...rolesAllowed: RouteRoleType[]) => {
+  const settingRoutesDynamicProtected = useCallback(() => {
+    const rolesAllowed: RouteRoleType[] = [(status === 'authenticated' ? 'private' : 'public'), 'all'];
+
     routes.forEach((currentRoute) => {
       if (isAllowedRoute(currentRoute.role, ...rolesAllowed)) {
         setRoutesDynamicProtected((oldRoutes) => {
@@ -60,7 +69,7 @@ export function useNavHandler() {
             item.label === currentRoute.label && item.link === currentRoute.link
           ));
 
-          const newRoutes = [...oldRoutes];
+          const newRoutes = settingRouteActive(oldRoutes);
 
           if (routeExists) return newRoutes;
 
@@ -70,12 +79,11 @@ export function useNavHandler() {
         });
       }
     });
-  }, [routes]);
+  }, [routes, settingRouteActive, status]);
 
   useEffect(() => {
-    settingRouteActive();
-    settingRoutesDynamicProtected('public', 'all');
-  }, [settingRouteActive, settingRoutesDynamicProtected]);
+    settingRoutesDynamicProtected();
+  }, [settingRouteActive, settingRoutesDynamicProtected, status]);
 
   return {
     mergeRoutes,

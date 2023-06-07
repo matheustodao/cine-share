@@ -8,7 +8,7 @@ export type CollectionParamsData = Pick<Collection, 'name' | 'description' | 'us
 
 export interface ResponsesCollection extends Omit<CollectionParams, 'created_at' | 'updated_at' | 'userId'> {
   media: MediaParams[],
-  user: Pick<UserParams, 'id' | 'name'>,
+  user: Pick<UserParams, 'id' | 'name', 'email'>,
   _count: {
     media: number
   }
