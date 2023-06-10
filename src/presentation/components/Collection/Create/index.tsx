@@ -17,6 +17,7 @@ import { createCollection } from 'infra/services/collection/createCollection';
 
 import { CollectionModalCreateProps } from 'types/presentation/collection';
 
+import { useDetectClickOutside } from 'react-detect-click-outside';
 import { ModalContainerCollection } from '../styles/ModalContainer';
 import { Form } from './styles';
 
@@ -31,6 +32,7 @@ export function CollectionModalCreate({ onClose, visible }: CollectionModalCreat
     mode: 'onBlur',
   });
   const [loading, setLoading] = useState(false);
+  const elementRef = useDetectClickOutside({ onTriggered: onClose });
 
   async function handleCreateCollection(data: SchemaCreateCollection) {
     try {
@@ -54,7 +56,7 @@ export function CollectionModalCreate({ onClose, visible }: CollectionModalCreat
   return (
     <Portal selector="create-collection-modal">
       <Overlay>
-        <ModalContainerCollection>
+        <ModalContainerCollection ref={elementRef}>
           <div className="header">
             <Title as="strong" size="medium">Criar coleção</Title>
             <button type="button" onClick={onClose}>

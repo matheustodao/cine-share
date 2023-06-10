@@ -13,6 +13,7 @@ import { Loader } from 'presentation/components/Loader';
 import { useSetMediaCollectionModalHandler } from 'presentation/handler/components/Collection/MediaModal';
 import { SchemaSetMediaIntoCollection, validationSchemaSetMediaIntoCollection } from 'presentation/validations/collection/setMedia';
 import { useState } from 'react';
+import { useDetectClickOutside } from 'react-detect-click-outside';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { ResponsesCollection } from 'types/server/collection';
@@ -30,6 +31,7 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
     resolver: zodResolver(validationSchemaSetMediaIntoCollection),
   });
   const [isLoading, setIsLoading] = useState(false);
+  const elementRef = useDetectClickOutside({ onTriggered: onClose });
 
   const collectionsSelected = watch('collections', []);
 
@@ -89,7 +91,7 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
       />
 
       <Overlay>
-        <ModalContainerCollection maxWidth="560px">
+        <ModalContainerCollection maxWidth="560px" ref={elementRef}>
           <div className="header">
             <Title as="strong" size="medium">Adicione em uma coleção</Title>
 

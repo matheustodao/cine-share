@@ -1,11 +1,12 @@
 import { X } from '@phosphor-icons/react';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useCallback, useEffect } from 'react';
+import { useDetectClickOutside } from 'react-detect-click-outside';
+
 import { Text } from 'presentation/components/Typography/Text';
 import { useNavHandler } from 'presentation/handler/components/Nav';
-import { useCallback, useEffect } from 'react';
 import { NavigationProps } from 'types/presentation/nav';
 import { Portal } from '../Portal';
 import {
@@ -17,6 +18,7 @@ import {
 
 export function Navigation({ onClose, shown }: NavigationProps) {
   const { routesDynamicProtected } = useNavHandler();
+  const elementRef = useDetectClickOutside({ onTriggered: onClose });
   const pathname = usePathname();
 
   const listenerPathnameChange = useCallback(() => {
@@ -32,7 +34,7 @@ export function Navigation({ onClose, shown }: NavigationProps) {
 
   return (
     <Portal>
-      <aside>
+      <aside ref={elementRef}>
         <Container
           initial={{
             scale: 0.2,

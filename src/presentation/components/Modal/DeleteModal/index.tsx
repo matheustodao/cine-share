@@ -3,19 +3,22 @@ import { Button } from 'presentation/components/Button';
 import { Overlay } from 'presentation/components/Overlay';
 import { Portal } from 'presentation/components/Portal';
 import { Title } from 'presentation/components/Typography/Title';
+import { useDetectClickOutside } from 'react-detect-click-outside';
 import { DeleteModalProps } from 'types/presentation/modal';
 import { Container } from './styles';
 
 export function DeleteModal({
   title, loading, onClick, onClose, visible,
 }: DeleteModalProps) {
+  const elementRef = useDetectClickOutside({ onTriggered: onClose });
+
   if (!visible) {
     return null;
   }
   return (
     <Portal selector="delete-modal">
       <Overlay>
-        <Container>
+        <Container ref={elementRef}>
           <div className="header">
             <Title as="strong" size="large">{title}</Title>
             <button type="button" onClick={onClose}>
