@@ -16,7 +16,7 @@ export const navRoutes: NavRoute[] = [
   },
 
   {
-    link: '/my-collections',
+    link: '/collection/user',
     label: 'Minhas Coleções',
     role: ['private'],
     active: false,
