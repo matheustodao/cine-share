@@ -68,8 +68,8 @@ export const authOptions: NextAuthOptions = NextAuth({
   },
 
   pages: {
-    signIn: '/auth/login',
-    error: '/auth/login',
+    signIn: '/login',
+    error: '/',
     signOut: '/',
   },
   session: {
