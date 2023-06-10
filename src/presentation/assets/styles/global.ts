@@ -56,4 +56,14 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
   button {
     cursor: pointer;
   }
+
+  .cta-no-data {
+    width: 80%;
+    margin: auto;
+
+    p {
+      text-align: center;
+      margin-bottom: 3.2rem;
+    }
+  }
 `);

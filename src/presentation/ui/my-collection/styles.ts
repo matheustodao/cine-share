@@ -33,6 +33,16 @@ export const Container = styled.article`
 
   }
 
+  .cta-no-data {
+    width: 80%;
+    margin: auto;
+
+    p {
+      text-align: center;
+      margin-bottom: 3.2rem;
+    }
+  }
+
   @media (min-width: 1000px) {
     max-width: 50%;
   }

@@ -1,9 +1,12 @@
 'use client';
 
 import { cineShareApi } from 'infra/api/cineShareApi';
+import { Center } from 'presentation/components/Center';
 import { CineCard } from 'presentation/components/CineCard';
+import { Link } from 'presentation/components/Link';
 import { DeleteModal } from 'presentation/components/Modal/DeleteModal';
 import { RedirectComponent } from 'presentation/components/RedictComponent';
+import { Text } from 'presentation/components/Typography/Text';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { CollectionUIProps } from 'types/presentation/collection';
@@ -77,6 +80,20 @@ export function CollectionUI({ collection }: CollectionUIProps) {
         ))}
       </Content>
 
+      {(medias.length === 0 && !isLoading) && (
+        <Center className="cta-no-data">
+          <Text schema={600} as="p">
+            Não perde tempo adicione suas recomendações de filmes, series, documentários
+            e entre outros.
+            E compartilhe com seus amigos!
+          </Text>
+
+          <Link href="/">
+            Adicionar recomendações
+          </Link>
+        </Center>
+      )}
+
       <DeleteModal
         title={`Tem certeza que deseja deletar a recomendação: ${mediaNameBeingDelete.title}`}
         onClick={() => handleRemoveMediaOnCollection(mediaNameBeingDelete.id)}
@@ -88,6 +105,7 @@ export function CollectionUI({ collection }: CollectionUIProps) {
       <CollectionFooter
         userEmail={collection.user.email}
         collectionId={collection.id}
+        hasMedia={!!medias.length}
       />
     </Container>
   );

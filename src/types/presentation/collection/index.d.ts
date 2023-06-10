@@ -38,4 +38,5 @@ export interface CollectionUIHeaderProps extends CollectionViewCommonProps {
 }
 export interface CollectionUIFooterProps extends CollectionViewCommonProps {
   collectionId: string
+  hasMedia: boolean
 }

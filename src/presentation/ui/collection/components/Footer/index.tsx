@@ -10,22 +10,24 @@ import { RWebShare } from 'react-web-share';
 import * as Root from './sytles';
 
 export function CollectionFooter({
-  userEmail,
+  userEmail, hasMedia,
 }: CollectionUIFooterProps) {
   const { status, data } = useSession();
 
   return (
     <Root.Container>
-      <RWebShare
-        data={{
-          title: 'Dê uma olhada nessas recomendações imperdíveis para assistir º CineShare',
-        }}
-      >
-        <Button>
-          <Share size={24} />
-          Compartilhar
-        </Button>
-      </RWebShare>
+      {hasMedia && (
+        <RWebShare
+          data={{
+            title: 'Dê uma olhada nessas recomendações imperdíveis para assistir º CineShare',
+          }}
+        >
+          <Button>
+            <Share size={24} />
+            Compartilhar
+          </Button>
+        </RWebShare>
+      )}
 
       {/* TODO add feature to delete collection  */}
       {(status === 'authenticated' && userEmail === data?.user?.email && false) && (
