@@ -9,13 +9,6 @@ export const navRoutes: NavRoute[] = [
   },
 
   {
-    link: '/about',
-    label: 'Sobre',
-    role: ['all'],
-    active: false,
-  },
-
-  {
     link: '/collection/user',
     label: 'Minhas Coleções',
     role: ['private'],
