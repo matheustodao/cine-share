@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.article`
-  max-width: 50%;
   margin: auto;
   margin-top: 3.2rem;
 
@@ -9,6 +8,8 @@ export const Container = styled.article`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2.4rem;
 
     margin-bottom: 4.2rem;
 
@@ -30,5 +31,9 @@ export const Container = styled.article`
       }
     }
 
+  }
+
+  @media (min-width: 1000px) {
+    max-width: 50%;
   }
 `;
