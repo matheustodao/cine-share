@@ -5,9 +5,12 @@ import { usePathname } from 'next/navigation';
 import { useCallback, useEffect } from 'react';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
+import { signOut } from 'next-auth/react';
+import { Power } from 'phosphor-react';
 import { Text } from 'presentation/components/Typography/Text';
 import { useNavHandler } from 'presentation/handler/components/Nav';
 import { NavigationProps } from 'types/presentation/nav';
+import { Button } from '../Button';
 import { Portal } from '../Portal';
 import {
   Container,
@@ -17,7 +20,7 @@ import {
 } from './styles';
 
 export function Navigation({ onClose, shown }: NavigationProps) {
-  const { routesDynamicProtected } = useNavHandler();
+  const { routesDynamicProtected, status } = useNavHandler();
   const elementRef = useDetectClickOutside({ onTriggered: onClose });
   const pathname = usePathname();
 
@@ -71,6 +74,15 @@ export function Navigation({ onClose, shown }: NavigationProps) {
                   </Link>
                 </Route>
               ))}
+
+              {status === 'authenticated' && (
+                <Route active="false">
+                  <Button schemaColor="unstyled" onClick={() => signOut()}>
+                    <Power weight="bold" size={20} />
+                    Sair
+                  </Button>
+                </Route>
+              )}
             </Nav>
           </div>
         </Container>

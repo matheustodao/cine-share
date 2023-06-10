@@ -90,5 +90,6 @@ export function useNavHandler() {
     isAllowedRoute,
     routes,
     routesDynamicProtected,
+    status,
   };
 }
