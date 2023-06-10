@@ -13,6 +13,12 @@ export const buttonColors = {
 
   softGray: css`
     --bg-color: ${({ theme }) => theme.colors.grey[200]};
+    --text-color: ${({ theme }) => theme.colors.white};
+  `,
+
+  unstyled: css`
+    --bg-color: transparent;
     --text-color: ${({ theme }) => theme.colors.grey[200]};
+    padding: 0;
   `,
 } as const;

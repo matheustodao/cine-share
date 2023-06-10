@@ -5,7 +5,6 @@ import { buttonColors } from './variants/colors';
 export const ButtonStyled = styled.button<ButtonStyles>(({
   theme, isoutline, schemacolor, loading,
 }) => css`
-  ${buttonColors[schemacolor ?? 'blue']};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,4 +57,6 @@ export const ButtonStyled = styled.button<ButtonStyles>(({
   :active {
     filter: brightness(0.9);
   }
+
+  ${buttonColors[schemacolor ?? 'blue']};
 `);
