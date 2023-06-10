@@ -62,14 +62,14 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
       || typeof collectionsSelected === 'undefined'
       || !Array.isArray(collectionsSelected)
     ) {
-      return true;
+      return false;
     }
 
     const isSelectedCollection = collectionsSelected?.findIndex((item) => (
       item === collectionId
     ));
 
-    return isSelectedCollection === -1;
+    return isSelectedCollection !== -1;
   }
 
   function handleClose() {
