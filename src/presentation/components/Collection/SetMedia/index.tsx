@@ -31,7 +31,10 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
     resolver: zodResolver(validationSchemaSetMediaIntoCollection),
   });
   const [isLoading, setIsLoading] = useState(false);
-  const elementRef = useDetectClickOutside({ onTriggered: onClose });
+  const elementRef = useDetectClickOutside({
+    onTriggered: onClose,
+    disableClick: createCollectionModal.isVisible,
+  });
 
   const collectionsSelected = watch('collections', []);
 
