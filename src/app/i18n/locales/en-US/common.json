@@ -1,7 +1,110 @@
 {
-  "hello": "Hi",
+  "logout": "Logout",
   "navigation": {
     "home": "Home",
-    "myCollections": "My Collections"
+    "myCollections": "My Collections",
+    "signUp": "Sign Up",
+    "signIn": "Sign In"
+  },
+  "home": {
+    "moviesTitles": [
+      "New Releases",
+      "Animations",
+      "Comedy Movies",
+      "Horror Movies",
+      "Adventure Movies"
+    ],
+    "tvShowsTitles": [
+      "American Series",
+      "Sci-Fi & Fantasy Series",
+      "Dramatic Series",
+      "K-Drama",
+      "Anime"
+    ]
+  },
+  "collection": {
+    "setMedia": {
+      "title": "Add to a Collection",
+      "cta": {
+        "submit": "Add",
+        "newCollection": "Create Collection"
+      }
+    },
+    "newCollection": {
+      "title": "Create Collection",
+      "field": {
+        "name": {
+          "label": "Name"
+        },
+        "description": {
+          "label": "Description (optional)"
+        }
+      },
+      "cta": {
+        "submit": "Create Collection",
+        "cancel": "Cancel"
+      }
+    },
+    "list": {
+      "title": "My Collections",
+      "addCollection": "Collection",
+      "noData": {
+        "description": "I noticed you haven't created any collections yet to share with your friends. Don't worry, we're here to help you get started!",
+        "cta": {
+          "submit": "Create Collection"
+        }
+      }
+    },
+    "view": {
+      "noData": {
+        "description": "Don't waste time, add your movie, series, documentary, and other recommendations. And share them with your friends!",
+        "cta": "Add Recommendations"
+      },
+      "deleteMedia": {
+        "title": "Don't waste time, add your movie, series, documentary, and other recommendations. And share them with your friends!",
+        "cta": {
+          "cancel": "Cancel",
+          "submit": "Delete"
+        }
+      },
+      "cta": {
+        "share": "Share"
+      }
+    },
+    "feedback": {
+      "setMedia": {
+        "success": "Successfully added"
+      },
+      "newCollection": {
+        "success": "Collection created successfully"
+      }
+    }
+  },
+  "signIn": {
+    "title": "Sign In",
+    "field": {
+      "email": {
+        "label": "Email"
+      },
+      "cta": {
+        "submit": "Sign In",
+        "signUp": "Sign Up"
+      }
+    }
+  },
+  "signUp": {
+    "title": "Sign Up",
+    "field": {
+      "name": {
+        "label": "Name"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "cta": {
+        "submit": "Sign Up",
+        "signIn": "Sign In"
+      }
+    }
   }
 }

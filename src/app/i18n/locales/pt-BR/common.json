@@ -1,7 +1,124 @@
 {
-  "hello": "Oi",
+  "logout": "Sair",
+
   "navigation": {
     "home": "Home",
-    "myCollections": "Minhas coleções"
+    "myCollections": "Minhas coleções",
+    "signUp": "Cadastrar",
+    "signIn": "Login"
+  },
+
+  "home": {
+    "moviesTitles": [
+      "Filmes de lançamentos",
+      "Animações",
+      "Filmes de comédia",
+      "Filmes de terror",
+      "Filmes de aventura"
+    ],
+
+    "tvShowsTitles": [
+      "Séries Americanas",
+      "Séries Sci-Fi & Fantasia",
+      "Séries Dramáticas",
+      "K-Drama",
+      "Animes"
+    ]
+  },
+
+  "collection": {
+    "setMedia": {
+      "title": "Adicione em uma coleção",
+      "cta": {
+        "submit": "Adicionar",
+        "newCollection": "Criar Coleção"
+      }
+    },
+
+    "newCollection": {
+      "title": "Criar coleção",
+      "field": {
+        "name": {
+          "label": "Nome"
+        },
+
+        "description": {
+          "label": "Descrição (opcional)"
+        }
+      },
+      "cta": {
+        "submit": "Criar Coleção",
+        "cancel": "Cancelar"
+      }
+    },
+
+    "list": {
+      "title": "Minhas coleções",
+      "addCollection": "Coleção",
+      "noData": {
+        "description": "Percebi que você ainda não criou nenhuma coleção para compartilhar com seus amigos. Não se preocupe, estamos aqui para te ajudar a começar!",
+        "cta": {
+          "submit": "Cadastrar Coleção"
+        }
+      }
+    },
+
+    "view": {
+      "noData": {
+        "description": "Não perde tempo adicione suas recomendações de filmes, series, documentários e entre outros. E compartilhe com seus amigos!",
+        "cta": "Adicionar recomendações"
+      },
+      "deleteMedia": {
+        "title": "Não perde tempo adicione suas recomendações de filmes, series, documentários e entre outros. E compartilhe com seus amigos!",
+        "cta": {
+          "cancel": "Cancelar",
+          "submit": "Deletar"
+        }
+      },
+      "cta": {
+        "share": "Compartilhar"
+      }
+    },
+
+    "feedback": {
+      "setMedia": {
+        "success": "Adicionado com sucesso"
+      },
+      "newCollection": {
+        "success": "Coleção criada com sucesso"
+      }
+    }
+  },
+
+  "signIn": {
+    "title": "Login",
+    "field": {
+      "email": {
+        "label": "Email"
+      },
+
+      "cta": {
+        "submit": "Entrar",
+        "signUp": "Cadastre-se"
+      }
+    }
+  },
+
+  "signUp": {
+    "title": "Cadastre-se",
+    "field": {
+      "name": {
+        "label": "Nome"
+      },
+
+      "email": {
+        "label": "Email"
+      },
+
+      "cta": {
+        "submit": "Cadastrar",
+        "signIn": "Login"
+      }
+    }
   }
 }
