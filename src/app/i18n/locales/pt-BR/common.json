@@ -3,7 +3,12 @@
 
   "feedback": {
     "invalidCredentials": "Email ou a senha é inválido",
-    "emailAlreadyInUse": "Email já cadastrado"
+    "emailAlreadyInUse": "Email já cadastrado",
+    "collectionNoFound": "Coleção não encontrada"
+  },
+
+  "share": {
+    "collection": "Vem dar uma olhada nessas recomendações imperdíveis para assistir | CineShare"
   },
 
   "navigation": {
@@ -75,7 +80,7 @@
         "cta": "Adicionar recomendações"
       },
       "deleteMedia": {
-        "title": "Não perde tempo adicione suas recomendações de filmes, series, documentários e entre outros. E compartilhe com seus amigos!",
+        "title": "Tem certeza que deseja deletar a recomendação:",
         "cta": {
           "cancel": "Cancelar",
           "submit": "Deletar"
