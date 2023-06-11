@@ -8,6 +8,12 @@
   "share": {
     "collection": "Come take a look at these must-watch recommendations | CineShare"
   },
+  "alt": {
+    "cineCard": {
+      "addOnCollection": "Add recommendation",
+      "deleteOnCollection": "Delete from collection"
+    }
+  },
   "navigation": {
     "home": "Home",
     "myCollections": "My Collections",

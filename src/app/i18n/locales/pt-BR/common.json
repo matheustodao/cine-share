@@ -11,6 +11,13 @@
     "collection": "Vem dar uma olhada nessas recomendações imperdíveis para assistir | CineShare"
   },
 
+  "alt": {
+    "cineCard": {
+      "addOnCollection": "Adicionar recomendação",
+      "deleteOnCollection": "Deletar da coleção"
+    }
+  },
+
   "navigation": {
     "home": "Home",
     "myCollections": "Minhas coleções",
