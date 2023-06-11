@@ -10,6 +10,8 @@ import { IProviderProps } from 'types/presentation/core';
 import { SessionProvider } from 'next-auth/react';
 import { AuthContextProvider } from 'presentation/context/AuthContext';
 
+import { Loader } from 'presentation/components/Loader';
+import { Suspense } from 'react';
 import 'react-loading-skeleton/dist/skeleton.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'swiper/css';
@@ -24,13 +26,15 @@ export function Provider({ children, session }: IProviderProps) {
     >
       <AuthContextProvider>
         <ThemeProvider theme={DEFAULT_THEME}>
-          <QueryClientProvider client={queryClient}>
-            <div>
-              <GlobalStyle />
-              {children}
-            </div>
-            <ToastContainer theme="dark" position="top-left" />
-          </QueryClientProvider>
+          <Suspense fallback={<Loader />}>
+            <QueryClientProvider client={queryClient}>
+              <div>
+                <GlobalStyle />
+                {children}
+              </div>
+              <ToastContainer theme="dark" position="top-left" />
+            </QueryClientProvider>
+          </Suspense>
         </ThemeProvider>
       </AuthContextProvider>
     </SessionProvider>

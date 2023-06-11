@@ -2,7 +2,7 @@ import { NavRoute } from 'types/presentation/nav';
 
 export const navRoutes: NavRoute[] = [
   {
-    link: '/',
+    link: '/home',
     label: 'Home',
     role: ['all'],
     active: false,
