@@ -11,11 +11,14 @@ function getLocale(request: NextRequest): string | undefined {
   request.headers.forEach((value, key) => {
     negotiatorHeaders[key] = value;
   });
+  const pathLocale = request.nextUrl.pathname.split('/')[1];
 
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
   const { locales } = i18n;
 
-  return matchLocale(languages, locales as unknown as string[], i18n.fallbackLng);
+  return !pathLocale
+    ? matchLocale(languages, locales as unknown as string[], i18n.fallbackLng)
+    : pathLocale;
 }
 
 export function middleware(request: NextRequest) {
@@ -26,11 +29,19 @@ export function middleware(request: NextRequest) {
     (currentLocale) => !pathname.startsWith(`/${currentLocale}`) && pathname !== `/${currentLocale}`,
   );
 
+  const isWrongLocale = i18n.locales.every(
+    (currentLocale) => currentLocale !== locale,
+  );
+
+  if (isWrongLocale) {
+    return NextResponse.redirect(new URL(`/${i18n.fallbackLng}/home`, request.url));
+  }
+
   if (pathnameIsMissingLocale) {
     return NextResponse.redirect(new URL(`/${locale}/${pathname}`, request.url));
   }
 
-  if (pathname === '/' || pathname === `/${locale}`) {
+  if (pathname === `/${locale}`) {
     return NextResponse.redirect(new URL(`/${locale}/home`, request.url));
   }
 }
