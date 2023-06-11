@@ -1,7 +1,13 @@
+// import { locales } from 'app/i18n/settings';
 import { getServerSession } from 'next-auth';
 import { Lato, Sora } from 'next/font/google';
 import { MainLayout } from 'presentation/layouts/Main';
-import { authOptions } from './api/auth/[...nextauth]/route';
+import { LangPropsPage } from 'types';
+import { authOptions } from '../api/auth/[...nextauth]/route';
+
+// export async function generateStaticParams() {
+//   return locales.map((locale) => ({ lang: locale }));
+// }
 
 export const metadata = {
   title: 'Cine Share',
@@ -23,14 +29,12 @@ const sora = Sora({
 });
 
 export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+  children, params: { lang },
+}: LangPropsPage) {
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang="en" className={`${lato.variable} ${sora.variable}`}>
+    <html lang={lang} className={`${lato.variable} ${sora.variable}`}>
       <body>
         <MainLayout session={session}>
           {children}
