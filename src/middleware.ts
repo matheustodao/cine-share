@@ -16,7 +16,7 @@ function getLocale(request: NextRequest): string | undefined {
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
   const { locales } = i18n;
 
-  return !pathLocale
+  return !i18n.locales.includes(pathLocale)
     ? matchLocale(languages, locales as unknown as string[], i18n.fallbackLng)
     : pathLocale;
 }
@@ -29,16 +29,22 @@ export function middleware(request: NextRequest) {
     (currentLocale) => !pathname.startsWith(`/${currentLocale}`) && pathname !== `/${currentLocale}`,
   );
 
-  const isWrongLocale = i18n.locales.every(
-    (currentLocale) => currentLocale !== locale,
+  const isLocaleExists = i18n.locales.findIndex(
+    (currentLocale) => currentLocale === locale,
   );
 
+  const isLocaleExistsLowerCaseComparator = i18n.locales.findIndex(
+    (currentLocale) => currentLocale?.toLocaleLowerCase() === locale?.toLocaleLowerCase(),
+  );
+  const isWrongLocale = isLocaleExists === -1 && isLocaleExistsLowerCaseComparator !== -1;
+  const localeToRedirect = isWrongLocale ? i18n.fallbackLng : locale;
+
   if (isWrongLocale) {
-    return NextResponse.redirect(new URL(`/${i18n.fallbackLng}/home`, request.url));
+    return NextResponse.redirect(new URL(`/${localeToRedirect}/home`, request.url));
   }
 
   if (pathnameIsMissingLocale) {
-    return NextResponse.redirect(new URL(`/${locale}/${pathname}`, request.url));
+    return NextResponse.redirect(new URL(`/${localeToRedirect}/${pathname}`, request.url));
   }
 
   if (pathname === `/${locale}`) {
