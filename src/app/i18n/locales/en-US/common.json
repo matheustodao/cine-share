@@ -1,5 +1,9 @@
 {
   "logout": "Logout",
+  "feedback": {
+    "invalidCredentials": "Email or password is invalid",
+    "emailAlreadyInUse": "Email already have been in use"
+  },
   "navigation": {
     "home": "Home",
     "myCollections": "My Collections",
@@ -86,11 +90,11 @@
     "field": {
       "email": {
         "label": "Email"
-      },
-      "cta": {
-        "submit": "Sign In",
-        "signUp": "Sign Up"
       }
+    },
+    "cta": {
+      "submit": "Sign In",
+      "signUp": "Sign Up"
     }
   },
   "signUp": {
@@ -101,11 +105,11 @@
       },
       "email": {
         "label": "Email"
-      },
-      "cta": {
-        "submit": "Sign Up",
-        "signIn": "Sign In"
       }
+    },
+    "cta": {
+      "submit": "Sign Up",
+      "signIn": "Sign In"
     }
   }
 }

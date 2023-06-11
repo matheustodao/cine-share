@@ -1,6 +1,11 @@
 {
   "logout": "Sair",
 
+  "feedback": {
+    "invalidCredentials": "Email ou a senha é inválido",
+    "emailAlreadyInUse": "Email já cadastrado"
+  },
+
   "navigation": {
     "home": "Home",
     "myCollections": "Minhas coleções",
@@ -96,12 +101,11 @@
     "field": {
       "email": {
         "label": "Email"
-      },
-
-      "cta": {
-        "submit": "Entrar",
-        "signUp": "Cadastre-se"
       }
+    },
+    "cta": {
+      "submit": "Entrar",
+      "signUp": "Cadastre-se"
     }
   },
 
@@ -114,12 +118,11 @@
 
       "email": {
         "label": "Email"
-      },
-
-      "cta": {
-        "submit": "Cadastrar",
-        "signIn": "Login"
       }
+    },
+    "cta": {
+      "submit": "Cadastrar",
+      "signIn": "Login"
     }
   }
 }
