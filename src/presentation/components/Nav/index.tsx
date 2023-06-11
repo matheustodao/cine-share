@@ -1,17 +1,20 @@
 import { X } from '@phosphor-icons/react';
+import { signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Power } from 'phosphor-react';
 import { useCallback, useEffect } from 'react';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
-import { signOut } from 'next-auth/react';
-import { Power } from 'phosphor-react';
+import { useTranslation } from 'app/i18n';
 import { Text } from 'presentation/components/Typography/Text';
 import { useNavHandler } from 'presentation/handler/components/Nav';
 import { NavigationProps } from 'types/presentation/nav';
+
 import { Button } from '../Button';
 import { Portal } from '../Portal';
+
 import {
   Container,
   Header,
@@ -23,6 +26,7 @@ export function Navigation({ onClose, shown }: NavigationProps) {
   const { routesDynamicProtected, status } = useNavHandler();
   const elementRef = useDetectClickOutside({ onTriggered: onClose });
   const pathname = usePathname();
+  const { t } = useTranslation();
 
   const listenerPathnameChange = useCallback(() => {
     onClose();
@@ -70,7 +74,7 @@ export function Navigation({ onClose, shown }: NavigationProps) {
               }) => (
                 <Route active={active.toString() as 'true' | 'false'} key={link}>
                   <Link href={link} role="link">
-                    {label}
+                    {t(label)}
                   </Link>
                 </Route>
               ))}
@@ -79,7 +83,7 @@ export function Navigation({ onClose, shown }: NavigationProps) {
                 <Route active="false">
                   <Button schemaColor="unstyled" onClick={() => signOut()}>
                     <Power weight="bold" size={20} />
-                    Sair
+                    {t('logout')}
                   </Button>
                 </Route>
               )}
