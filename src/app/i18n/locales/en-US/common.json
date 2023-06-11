@@ -25,6 +25,7 @@
   "collection": {
     "setMedia": {
       "title": "Add to a Collection",
+      "noData": "There are no registered collections",
       "cta": {
         "submit": "Add",
         "newCollection": "Create Collection"

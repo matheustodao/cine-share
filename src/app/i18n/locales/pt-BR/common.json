@@ -29,6 +29,7 @@
   "collection": {
     "setMedia": {
       "title": "Adicione em uma coleção",
+      "noData": "Não há coleção cadastrada",
       "cta": {
         "submit": "Adicionar",
         "newCollection": "Criar Coleção"
@@ -36,7 +37,7 @@
     },
 
     "newCollection": {
-      "title": "Criar coleção",
+      "title": "Criar uma coleção",
       "field": {
         "name": {
           "label": "Nome"
