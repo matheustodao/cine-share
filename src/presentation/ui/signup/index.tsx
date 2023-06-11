@@ -15,6 +15,7 @@ import { Title } from 'presentation/components/Typography/Title';
 import { createUser } from 'infra/services/user/auth/signup/createUser';
 import { FormGroup } from 'presentation/components/Form/Group';
 import { SchemaSignUp, validationSchemaSignUp } from 'presentation/validations/auth/signup';
+import { useTranslation } from 'react-i18next';
 import { Container, Form } from './styles';
 
 export function SignUpUI() {
@@ -24,6 +25,7 @@ export function SignUpUI() {
     mode: 'onBlur',
   });
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation('common');
 
   async function handleSignUp(data: SchemaSignUp) {
     try {
@@ -39,7 +41,7 @@ export function SignUpUI() {
 
       router.push('/');
     } catch {
-      toast.error('Email já cadastrado', { position: 'bottom-center' });
+      toast.error(t('feedback.emailAlreadyInUse'), { position: 'bottom-center' });
     } finally {
       setLoading(false);
     }
@@ -48,16 +50,24 @@ export function SignUpUI() {
   return (
     <Container>
       <Title as="h1" size="xxl" weight="semi">
-        Sign Up
+        {t('signUp.title')}
       </Title>
 
       <Form onSubmit={handleSubmit(handleSignUp)} noValidate>
         <FormGroup errorMessage={errors?.name?.message}>
-          <Input type="text" placeholder="Nome" {...register('name')} />
+          <Input
+            type="text"
+            placeholder={t('signUp.field.name.label')}
+            {...register('name')}
+          />
         </FormGroup>
 
         <FormGroup errorMessage={errors?.email?.message}>
-          <Input type="email" placeholder="Email" {...register('email')} />
+          <Input
+            type="email"
+            placeholder={t('signUp.field.email.label')}
+            {...register('email')}
+          />
         </FormGroup>
 
         <FormGroup errorMessage={errors?.password?.message}>
@@ -66,11 +76,11 @@ export function SignUpUI() {
 
         <div className="actions">
           <Button type="submit" loading={loading} disabled={!isValid}>
-            Cadastrar
+            {t('signUp.cta.submit')}
           </Button>
 
           <Link href="/login" isoutline="true" schemacolor="softGray">
-            Login
+            {t('signUp.cta.signIn')}
           </Link>
         </div>
       </Form>
