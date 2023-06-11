@@ -30,11 +30,11 @@ export function DeleteModal({
 
           <div className="actions">
             <Button type="reset" onClick={onClose}>
-              {t('collection.view.deleteModal.cancel')}
+              {t('collection.view.deleteMedia.cta.cancel')}
             </Button>
 
             <Button onClick={onClick} outline schemaColor="softGray" loading={loading}>
-              {t('collection.view.deleteModal.submit')}
+              {t('collection.view.deleteMedia.cta.submit')}
             </Button>
           </div>
         </Container>

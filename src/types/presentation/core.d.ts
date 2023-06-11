@@ -1,7 +1,5 @@
-import { ReactNode } from 'react';
-
 interface IChildren {
-  children: ReactNode
+  children: ReactNode | ReactElement<any, string | JSXElementConstructor<any>>
 }
 
 export interface IProviderProps extends IChildren {
