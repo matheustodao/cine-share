@@ -64,4 +64,13 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
       margin-bottom: 3.2rem;
     }
   }
+
+  input {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      transition: all 5000s ease-in-out 0s;
+    }
+  }
 `);
