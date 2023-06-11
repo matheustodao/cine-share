@@ -1,6 +1,6 @@
 'use client';
 
-import i18next from 'i18next';
+import i18next, { Namespace } from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import { useEffect } from 'react';
@@ -20,7 +20,7 @@ i18next
 
 const runsOnServerSide = typeof window === 'undefined';
 
-export function useTranslation(ns?: string, lng?: any, options?: never) {
+export function useTranslation(ns?: Namespace, lng?: any, options?: never) {
   const ret = useTranslationOrg(ns, options);
   const { i18n } = ret;
   if (runsOnServerSide && i18n.resolvedLanguage !== lng) {
