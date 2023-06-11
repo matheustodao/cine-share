@@ -17,6 +17,7 @@ import { useDetectClickOutside } from 'react-detect-click-outside';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { ResponsesCollection } from 'types/server/collection';
+import { useTranslation } from 'app/i18n';
 import { CollectionCard } from '../Card';
 import { CollectionModalCreate } from '../Create';
 import { ModalContainerCollection } from '../styles/ModalContainer';
@@ -25,6 +26,8 @@ import { Content, ListCollection } from './styles';
 
 export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCollectionModalProps) {
   const { collections, createCollectionModal } = useSetMediaCollectionModalHandler(visible);
+  const { t } = useTranslation();
+
   const {
     register, watch, handleSubmit, reset,
   } = useForm<SchemaSetMediaIntoCollection>({
@@ -48,7 +51,7 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
       });
 
       onClose();
-      toast.success('Adicionado com sucesso!');
+      toast.success(t('collection.feedback.setMedia.success'));
     } finally {
       setIsLoading(false);
       reset();
@@ -96,7 +99,7 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
       <Overlay>
         <ModalContainerCollection maxWidth="560px" ref={elementRef}>
           <div className="header">
-            <Title as="strong" size="medium">Adicione em uma coleção</Title>
+            <Title as="strong" size="medium">{t('collection.setMedia.title')}</Title>
 
             <button type="button" onClick={handleClose}>
               <X />
@@ -128,18 +131,18 @@ export function SetMediaCollectionModal({ visible, onClose, media }: SetMediaCol
               {!collections.isLoading && collections.data?.length === 0 && (
 
               <Title as="span" schema={500}>
-                Não há nenhuma coleção cadastrada
+                {t('collection.setMedia.noData')}
               </Title>
               )}
             </ListCollection>
 
             <div className="actions">
               <Button type="submit" loading={isLoading}>
-                Adicionar
+                {t('collection.setMedia.cta.submit')}
               </Button>
 
               <Button type="button" outline schemaColor="softGray" onClick={createCollectionModal.onOpen}>
-                Criar Coleção
+                {t('collection.setMedia.cta.newCollection')}
               </Button>
             </div>
           </Content>
