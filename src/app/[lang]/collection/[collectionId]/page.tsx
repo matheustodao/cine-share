@@ -1,3 +1,5 @@
+'use client';
+
 import { getCollectionById } from 'infra/services/collection/getCollectionById';
 
 import { CollectionUI } from 'presentation/ui/collection';
