@@ -35,6 +35,10 @@ export const ButtonStyled = styled.button<ButtonStyles>(({
     color: var(--bg-color);
   `}
 
+  .wrapper {
+    position: relative;
+  }
+
   .content {
     display: ${loading === 'true' ? 'none' : 'flex'};
     align-items: center;
