@@ -14,10 +14,14 @@ import { CollectionCard } from 'presentation/components/Collection/Card';
 import { CollectionModalCreate } from 'presentation/components/Collection/Create';
 import { Loader } from 'presentation/components/Loader';
 import { Text } from 'presentation/components/Typography/Text';
+import { useTranslation } from 'app/i18n';
 import * as Root from './styles';
 
 export function MyCollectionUI() {
-  const { data, isLoading, refetch } = useQuery('collection-user', indexUserCollection);
+  const { data, isLoading, refetch } = useQuery('collection-user', indexUserCollection, {
+    refetchOnWindowFocus: true,
+  });
+  const { t } = useTranslation('common');
   const [isVisibleCreateCollectionModal, setIsVisibleCreateCollectionModal] = useState(false);
 
   function handleOpenCreateCollectionModal() {
@@ -32,11 +36,13 @@ export function MyCollectionUI() {
   return (
     <Root.Container>
       <header>
-        <Title size="large">Minhas coleções</Title>
+        <Title size="large">
+          {t('collection.list.title')}
+        </Title>
 
         <Button onClick={handleOpenCreateCollectionModal}>
           <Plus size={24} />
-          Coleção
+          {t('collection.list.addCollection')}
         </Button>
       </header>
 
@@ -65,12 +71,11 @@ export function MyCollectionUI() {
       {(data?.data?.length === 0 && !isLoading) && (
         <Center className="cta-no-data">
           <Text schema={600} as="p">
-            Percebi que você ainda não criou nenhuma coleção para compartilhar com seus amigos.
-            Não se preocupe, estamos aqui para te ajudar a começar!
+            {t('collection.list.noData.description')}
           </Text>
 
           <Button onClick={handleOpenCreateCollectionModal}>
-            Cadastre coleção
+            {t('collection.list.noData.cta.submit')}
           </Button>
         </Center>
       )}

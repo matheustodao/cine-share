@@ -5,12 +5,14 @@ import { Portal } from 'presentation/components/Portal';
 import { Title } from 'presentation/components/Typography/Title';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 import { DeleteModalProps } from 'types/presentation/modal';
+import { useTranslation } from 'app/i18n';
 import { Container } from './styles';
 
 export function DeleteModal({
   title, loading, onClick, onClose, visible,
 }: DeleteModalProps) {
   const elementRef = useDetectClickOutside({ onTriggered: onClose });
+  const { t } = useTranslation('common');
 
   if (!visible) {
     return null;
@@ -28,11 +30,11 @@ export function DeleteModal({
 
           <div className="actions">
             <Button type="reset" onClick={onClose}>
-              Cancelar
+              {t('collection.view.deleteModal.cancel')}
             </Button>
 
             <Button onClick={onClick} outline schemaColor="softGray" loading={loading}>
-              Deletar
+              {t('collection.view.deleteModal.submit')}
             </Button>
           </div>
         </Container>

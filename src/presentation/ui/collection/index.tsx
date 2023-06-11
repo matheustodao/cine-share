@@ -10,6 +10,7 @@ import { Text } from 'presentation/components/Typography/Text';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { CollectionUIProps } from 'types/presentation/collection';
+import { useTranslation } from 'app/i18n';
 import { CollectionFooter } from './components/Footer';
 import { CollectionHeader } from './components/Header';
 import { Container, Content } from './styles';
@@ -19,6 +20,7 @@ export function CollectionUI({ collection }: CollectionUIProps) {
   const [modalDeleteIsVisible, setModalDeleteIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [mediaNameBeingDelete, setMediaNameBeingDelete] = useState({ id: '', title: '' });
+  const { t } = useTranslation('common');
 
   if (!collection) {
     return (
@@ -83,19 +85,17 @@ export function CollectionUI({ collection }: CollectionUIProps) {
       {(medias.length === 0 && !isLoading) && (
         <Center className="cta-no-data">
           <Text schema={600} as="p">
-            Não perde tempo adicione suas recomendações de filmes, series, documentários
-            e entre outros.
-            E compartilhe com seus amigos!
+            {t('collection.view.noData.description')}
           </Text>
 
           <Link href="/">
-            Adicionar recomendações
+            {t('collection.view.noData.cta')}
           </Link>
         </Center>
       )}
 
       <DeleteModal
-        title={`Tem certeza que deseja deletar a recomendação: ${mediaNameBeingDelete.title}`}
+        title={`${t('collection.view.deleteMedia.title')} ${mediaNameBeingDelete.title}?`}
         onClick={() => handleRemoveMediaOnCollection(mediaNameBeingDelete.id)}
         onClose={handleCloseDeleteModal}
         loading={isLoading}
