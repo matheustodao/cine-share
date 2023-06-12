@@ -1,6 +1,13 @@
 {
   "logout": "Sair",
 
+  "notFound": {
+    "inBuilding": {
+      "title": "Em construção: Novidades em breve!",
+      "description": "Estamos trabalhando arduamente para trazer a você uma experiência incrível. Em breve, teremos novidades emocionantes e conteúdo de alta qualidade.Agradecemos sua paciência e esperamos compartilhar tudo com você em breve!"
+    }
+  },
+
   "feedback": {
     "invalidCredentials": "Email ou a senha é inválido",
     "emailAlreadyInUse": "Email já cadastrado",

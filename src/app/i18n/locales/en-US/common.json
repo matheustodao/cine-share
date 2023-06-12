@@ -5,6 +5,12 @@
     "emailAlreadyInUse": "Email already have been in use",
     "collectionNoFound": "Collection not found"
   },
+  "notFound": {
+    "inBuilding": {
+      "title": "Under Construction: Coming Soon!",
+      "description": "We are working diligently to bring you an amazing experience. Soon, we will have exciting updates and high-quality content. We appreciate your patience and look forward to sharing everything with you soon!"
+    }
+  },
   "share": {
     "collection": "Come take a look at these must-watch recommendations | CineShare"
   },

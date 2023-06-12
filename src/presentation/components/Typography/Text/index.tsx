@@ -1,4 +1,5 @@
-/* eslint-disable react/require-default-props */
+'use client';
+
 import { IChildren } from 'types/presentation/core';
 import { StyledText, TextProps as TextPropsStyled } from './styles';
 
