@@ -1,6 +1,5 @@
 import { X } from '@phosphor-icons/react';
 import { signOut } from 'next-auth/react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Power } from 'phosphor-react';
@@ -21,6 +20,7 @@ import {
   Nav,
   Route,
 } from './styles';
+import { LanguageSwitcher } from '../LanguageSwitcher';
 
 export function Navigation({ onClose, shown }: NavigationProps) {
   const { routesDynamicProtected, status } = useNavHandler();
@@ -58,7 +58,7 @@ export function Navigation({ onClose, shown }: NavigationProps) {
           }}
         >
           <Header>
-            <Image src="/assets/logo/logo-white.svg" alt="logo" width={34} height={34} />
+            <LanguageSwitcher />
 
             <button type="button" onClick={onClose}>
               <Text schema={900}>
