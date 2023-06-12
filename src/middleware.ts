@@ -11,12 +11,12 @@ function getLocale(request: NextRequest): string | undefined {
   request.headers.forEach((value, key) => {
     negotiatorHeaders[key] = value;
   });
-  const pathLocale = request.nextUrl.pathname.split('/')[1];
+  const pathLocale = request.cookies.get('x-locale')?.value;
 
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
   const { locales } = i18n;
 
-  return !i18n.locales.includes(pathLocale)
+  return !i18n.locales.includes(pathLocale ?? '')
     ? matchLocale(languages, locales as unknown as string[], i18n.fallbackLng)
     : pathLocale;
 }
