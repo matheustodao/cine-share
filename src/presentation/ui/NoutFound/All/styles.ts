@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 4.2rem;
-  margin-top: 25%;
+  margin-top: 5%;
   height: 100%;
   padding: 0 2.4rem;
 
@@ -33,5 +33,6 @@ export const Container = styled.div`
 
   p {
     line-height: 2.4rem;
+    max-width: 45rem;
   }
 `;
