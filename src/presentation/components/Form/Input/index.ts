@@ -9,4 +9,15 @@ export const Input = styled.input(({ theme }) => `
   ::placeholder {
     color: ${theme.colors.whiteAlpha[700]};
   }
+
+  ::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    transition: all 5000s ease-in-out 0s;
+  }
 `);
