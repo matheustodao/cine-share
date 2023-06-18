@@ -72,14 +72,27 @@ export function SearchUI() {
             {mediaResponse.map((result) => {
               if (result.media_type === 'person') {
                 return result.known_for.map((media) => (
-                  <CineCard
-                    key={media.id}
-                    id={media.id}
-                    image={media.poster_path ?? media.backdrop_path}
-                    title={media.original_title}
-                    original_language={media.original_language}
-                    type={media.media_type}
-                  />
+                  media.media_type === 'movie'
+                    ? (
+                      <CineCard
+                        key={media.id}
+                        id={media.id}
+                        image={media.poster_path ?? media.backdrop_path}
+                        title={media.title}
+                        original_language={media.original_language}
+                        type={media.media_type}
+                      />
+                    )
+                    : media.media_type === 'tv' && (
+                      <CineCard
+                        key={media.id}
+                        id={media.id}
+                        image={media.poster_path ?? media.backdrop_path}
+                        title={media.name}
+                        original_language={media.original_language}
+                        type={media.media_type}
+                      />
+                    )
                 ));
               }
 
@@ -88,7 +101,7 @@ export function SearchUI() {
                   key={result.id}
                   id={result.id}
                   image={result.poster_path ?? result.backdrop_path}
-                  title={result.original_title}
+                  title={result.media_type === 'movie' ? result.title : result.name}
                   original_language={result.original_language}
                   type={result.media_type}
                 />

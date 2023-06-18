@@ -40,21 +40,6 @@ export interface TMDBTv extends Omit<TMDBMovie, 'title'> {
   name: string
 }
 
-export interface TMDBCastResponse {
-  media_type: 'person',
-  adult: boolean,
-  id: string,
-  name: string,
-  original_name: string,
-  popularity: number,
-  gender: number,
-  known_for_department: string,
-  profile_path: string,
-  known_for: Array<(TMDBMovie | TMDBTv) & {
-    media_type: 'movie' | 'tv'
-  }>
-}
-
 export interface TMDBMultiSearchQuery {
   query: string
   include_adult?: boolean
@@ -76,7 +61,22 @@ export type TMDBMultiSearch = (
   | TMDBCastResponse
 );
 
-type TMDBMedia = TMDBMovie & TMDBTv & TMDBCastResponse;
+type TMDBMedia = TMDBMovie & TMDBTv & {
+  media_type: 'movie' | 'tv'
+};
+
+export interface TMDBCastResponse {
+  media_type: 'person',
+  adult: boolean,
+  id: string,
+  name: string,
+  original_name: string,
+  popularity: number,
+  gender: number,
+  known_for_department: string,
+  profile_path: string,
+  known_for: Array<TMDBMultiSearch | TMDBSearchMovie>
+}
 
 export interface ResponseTMDBMovie extends ResponseTMDBArray<TMDBMovie> { }
 export interface ResponseTMDBMultiSearch extends ResponseTMDBArray<TMDBMultiSearch> { }
