@@ -4,6 +4,7 @@ import { List, MagnifyingGlass } from '@phosphor-icons/react';
 import { AnimatePresence } from 'framer-motion';
 import { useHeaderHandler } from 'presentation/handler/components/Header';
 
+import Link from 'next/link';
 import { Text } from '../Typography/Text';
 
 import { Navigation } from '../Nav';
@@ -23,11 +24,11 @@ export function Header() {
         <LanguageSwitcher />
 
         <Actions>
-          <IconButton type="button">
+          <Link href="/search">
             <Text schema={900}>
               <MagnifyingGlass size={32} />
             </Text>
-          </IconButton>
+          </Link>
 
           <IconButton type="button" onClick={handleToggleNavVisibility}>
             <Text schema={900}>
