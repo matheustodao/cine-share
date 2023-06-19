@@ -36,16 +36,47 @@ export type ResponseTMDBArray<T = any[]> = {
   total_results: number
 };
 
-export interface TMDBMultiSearch extends TMDBMovie {
-  media_type: 'movie' | 'tv'
-}
-
 export interface TMDBTv extends Omit<TMDBMovie, 'title'> {
   name: string
 }
 
-type TMDBMedia = TMDBMovie & TMDBTv & TMDBMultiSearch;
+export interface TMDBMultiSearchQuery {
+  query: string
+  include_adult?: boolean
+  language?: string
+  page?: number
+}
+
+type TMDBSearchMovie = TMDBMovie & {
+  media_type: 'movie'
+};
+
+type TMDBSearchTv = TMDBTv & {
+  media_type: 'tv'
+};
+
+export type TMDBMultiSearch = (
+  | TMDBSearchMovie
+  | TMDBSearchTv
+  | TMDBCastResponse
+);
+
+type TMDBMedia = TMDBMovie & TMDBTv & {
+  media_type: 'movie' | 'tv'
+};
+
+export interface TMDBCastResponse {
+  media_type: 'person',
+  adult: boolean,
+  id: string,
+  name: string,
+  original_name: string,
+  popularity: number,
+  gender: number,
+  known_for_department: string,
+  profile_path: string,
+  known_for: Array<TMDBMultiSearch | TMDBSearchMovie>
+}
 
 export interface ResponseTMDBMovie extends ResponseTMDBArray<TMDBMovie> { }
 export interface ResponseTMDBMultiSearch extends ResponseTMDBArray<TMDBMultiSearch> { }
-export interface ResponseTMDBTv extends ResponseTMDBArray<TMDBTv> { }

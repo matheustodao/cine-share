@@ -26,11 +26,3 @@ export const moviesRawQueries: QueriesContent<DiscoverMovieQueryParams>[] = [
     params: { with_genres: 12 },
   },
 ];
-
-export const moviesTitles = [
-  'Filmes em lançamentos',
-  'Animações',
-  'Filmes de comédias',
-  'Filmes de terror',
-  'Filmes de aventura',
-];

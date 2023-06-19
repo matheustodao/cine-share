@@ -14,6 +14,7 @@ import { Title } from 'presentation/components/Typography/Title';
 
 import { FormGroup } from 'presentation/components/Form/Group';
 import { SchemaLogin, validationSchemaLogin } from 'presentation/validations/auth/login';
+import { useTranslation } from 'app/i18n';
 import { Container, Form } from './styles';
 
 export function LoginUI() {
@@ -23,6 +24,7 @@ export function LoginUI() {
     mode: 'onBlur',
   });
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation('common');
 
   async function handleSignIn(data: SchemaLogin) {
     try {
@@ -35,7 +37,7 @@ export function LoginUI() {
       });
 
       if (response?.error) {
-        return toast.error('Senha ou email inválido', { position: 'bottom-center' });
+        return toast.error(t('feedback.invalidCredentials'), { position: 'bottom-center' });
       }
 
       router.push('/');
@@ -46,12 +48,16 @@ export function LoginUI() {
   return (
     <Container>
       <Title as="h1" size="xxl" weight="semi">
-        Login
+        {t('signIn.title')}
       </Title>
 
       <Form onSubmit={handleSubmit(handleSignIn)} noValidate>
         <FormGroup errorMessage={errors?.email?.message}>
-          <Input type="email" placeholder="Email" {...register('email')} />
+          <Input
+            type="email"
+            placeholder={t('signIn.field.email.label')}
+            {...register('email')}
+          />
         </FormGroup>
 
         <FormGroup errorMessage={errors?.password?.message}>
@@ -60,11 +66,11 @@ export function LoginUI() {
 
         <div className="actions">
           <Button type="submit" loading={loading} disabled={!isValid}>
-            Entrar
+            {t('signIn.cta.submit')}
           </Button>
 
           <Link href="/sign-up" isoutline="true" schemacolor="softGray">
-            Cadastrar
+            {t('signIn.cta.signUp')}
           </Link>
         </div>
       </Form>

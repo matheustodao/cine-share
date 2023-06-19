@@ -12,7 +12,7 @@ export function RedirectComponent({
   const router = useRouter();
 
   useLayoutEffect(() => {
-    router.push(route);
+    router.replace(route);
     toast(toastMessage, {
       type: 'info',
       ...toastOptions,

@@ -27,11 +27,3 @@ export const tvShowsRawQueries: QueriesContent<DiscoverTVQueryParams>[] = [
     params: { with_origin_country: 'JP|KR|HR', with_genres: 16 },
   },
 ];
-
-export const tvShowsTitles = [
-  'Séries americanas',
-  'Séries Sci-Fi & Fantasia',
-  'Séries dramáticas',
-  'K-drama',
-  'Animes',
-];

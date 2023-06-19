@@ -9,7 +9,9 @@ import { ButtonStyled } from './styles';
 export const Button = forwardRef<HTMLButtonElement, IButtonProps>(({
   children, loading, outline = false, schemaColor, ...props
 }, elementRef) => {
-  const [parent] = useAutoAnimate();
+  const [parent] = useAutoAnimate({
+    duration: 250,
+  });
   return (
     <ButtonStyled
       type="button"
@@ -27,9 +29,11 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(({
           </div>
         )}
 
-        <div className="content">
-          {children}
-        </div>
+        {!loading && (
+          <div className="content">
+            {children}
+          </div>
+        )}
       </div>
     </ButtonStyled>
   );

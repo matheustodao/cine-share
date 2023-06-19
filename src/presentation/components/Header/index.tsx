@@ -2,14 +2,16 @@
 
 import { List, MagnifyingGlass } from '@phosphor-icons/react';
 import { AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import { useHeaderHandler } from 'presentation/handler/components/Header';
+
+import Link from 'next/link';
 import { Text } from '../Typography/Text';
 
 import { Navigation } from '../Nav';
 import {
   Actions, Container, Content, IconButton,
 } from './styles';
+import { LanguageSwitcher } from '../LanguageSwitcher';
 
 export function Header() {
   const {
@@ -19,14 +21,14 @@ export function Header() {
   return (
     <Container>
       <Content>
-        <Image src="/assets/logo/logo-white.svg" alt="logo" width={34} height={34} />
+        <LanguageSwitcher />
 
         <Actions>
-          <IconButton type="button">
+          <Link href="/search">
             <Text schema={900}>
               <MagnifyingGlass size={32} />
             </Text>
-          </IconButton>
+          </Link>
 
           <IconButton type="button" onClick={handleToggleNavVisibility}>
             <Text schema={900}>

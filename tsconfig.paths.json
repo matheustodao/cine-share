@@ -7,6 +7,7 @@
       "@data/*": ["/data/*"],
       "@infra/*": ["/infra/*"],
       "@domain/*": ["/domain/*"],
+      "@root/*": ["../*"]
     }
   }
 }

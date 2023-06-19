@@ -1,12 +1,16 @@
 'use client';
 
 import { cineShareApi } from 'infra/api/cineShareApi';
+import { Center } from 'presentation/components/Center';
 import { CineCard } from 'presentation/components/CineCard';
+import { Link } from 'presentation/components/Link';
 import { DeleteModal } from 'presentation/components/Modal/DeleteModal';
 import { RedirectComponent } from 'presentation/components/RedictComponent';
+import { Text } from 'presentation/components/Typography/Text';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { CollectionUIProps } from 'types/presentation/collection';
+import { useTranslation } from 'app/i18n';
 import { CollectionFooter } from './components/Footer';
 import { CollectionHeader } from './components/Header';
 import { Container, Content } from './styles';
@@ -16,6 +20,7 @@ export function CollectionUI({ collection }: CollectionUIProps) {
   const [modalDeleteIsVisible, setModalDeleteIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [mediaNameBeingDelete, setMediaNameBeingDelete] = useState({ id: '', title: '' });
+  const { t } = useTranslation('common');
 
   if (!collection) {
     return (
@@ -77,8 +82,20 @@ export function CollectionUI({ collection }: CollectionUIProps) {
         ))}
       </Content>
 
+      {(medias.length === 0 && !isLoading) && (
+        <Center className="cta-no-data">
+          <Text schema={600} as="p">
+            {t('collection.view.noData.description')}
+          </Text>
+
+          <Link href="/">
+            {t('collection.view.noData.cta')}
+          </Link>
+        </Center>
+      )}
+
       <DeleteModal
-        title={`Tem certeza que deseja deletar a recomendação: ${mediaNameBeingDelete.title}`}
+        title={`${t('collection.view.deleteMedia.title')} ${mediaNameBeingDelete.title}?`}
         onClick={() => handleRemoveMediaOnCollection(mediaNameBeingDelete.id)}
         onClose={handleCloseDeleteModal}
         loading={isLoading}
@@ -88,6 +105,7 @@ export function CollectionUI({ collection }: CollectionUIProps) {
       <CollectionFooter
         userEmail={collection.user.email}
         collectionId={collection.id}
+        hasMedia={!!medias.length}
       />
     </Container>
   );

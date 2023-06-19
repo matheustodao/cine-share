@@ -2,36 +2,29 @@ import { NavRoute } from 'types/presentation/nav';
 
 export const navRoutes: NavRoute[] = [
   {
-    link: '/',
-    label: 'Home',
+    link: '/home',
+    label: 'navigation.home',
     role: ['all'],
     active: false,
   },
 
   {
-    link: '/about',
-    label: 'Sobre',
-    role: ['all'],
-    active: false,
-  },
-
-  {
-    link: '/my-collections',
-    label: 'Minhas Coleções',
+    link: '/collection/user',
+    label: 'navigation.myCollections',
     role: ['private'],
     active: false,
   },
 
   {
     link: '/sign-up',
-    label: 'Cadastrar',
+    label: 'navigation.signUp',
     role: ['all'],
     active: false,
   },
 
   {
     link: '/login',
-    label: 'Login',
+    label: 'navigation.signIn',
     role: ['all'],
     active: false,
   },

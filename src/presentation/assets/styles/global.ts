@@ -8,8 +8,6 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
     outline: none;
     border: none;
 
-    transition: all 160ms ease;
-
     ::-webkit-scrollbar {
       width: 0.2rem;
     }
@@ -55,5 +53,24 @@ export const GlobalStyle = createGlobalStyle(({ theme }) => css`
 
   button {
     cursor: pointer;
+  }
+
+  .cta-no-data {
+    width: 80%;
+    margin: auto;
+
+    p {
+      text-align: center;
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  input {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      transition: all 5000s ease-in-out 0s;
+    }
   }
 `);

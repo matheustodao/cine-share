@@ -12,8 +12,10 @@ export function useNavHandler() {
   const { status } = useSession();
 
   const settingRouteActive = useCallback((oldRoutes: NavRoute[]) => {
+    const regexToRemoveLocale = /^\/(?:[^\\/]+)(\/.*)$/;
+    const parsePathname = pathname.replace(regexToRemoveLocale, '$1');
     const routeActive = oldRoutes.find((currentRoute) => (
-      currentRoute.link.startsWith(pathname)
+      currentRoute.link.startsWith(parsePathname)
     ));
 
     if (!routeActive) {
@@ -23,8 +25,6 @@ export function useNavHandler() {
     const oldRouteActive = oldRoutes.findIndex(((item) => (
       item.active === true
     )));
-
-    console.log({ oldRouteActive });
 
     const routeIndex = oldRoutes.findIndex(((item) => (
       item.link === routeActive.link && item.label === routeActive.label
@@ -90,5 +90,6 @@ export function useNavHandler() {
     isAllowedRoute,
     routes,
     routesDynamicProtected,
+    status,
   };
 }

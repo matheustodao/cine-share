@@ -1,0 +1,141 @@
+{
+  "logout": "Logout",
+  "feedback": {
+    "invalidCredentials": "Email or password is invalid",
+    "emailAlreadyInUse": "Email already have been in use",
+    "collectionNoFound": "Collection not found"
+  },
+  "notFound": {
+    "inBuilding": {
+      "title": "Under Construction: Coming Soon!",
+      "description": "We are working diligently to bring you an amazing experience. Soon, we will have exciting updates and high-quality content. We appreciate your patience and look forward to sharing everything with you soon!"
+    }
+  },
+  "share": {
+    "collection": "Come take a look at these must-watch recommendations | CineShare"
+  },
+  "alt": {
+    "cineCard": {
+      "addOnCollection": "Add recommendation",
+      "deleteOnCollection": "Delete from collection"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "myCollections": "My Collections",
+    "signUp": "Sign Up",
+    "signIn": "Sign In"
+  },
+  "home": {
+    "moviesTitles": [
+      "New Releases",
+      "Animations",
+      "Comedy Movies",
+      "Horror Movies",
+      "Adventure Movies"
+    ],
+    "tvShowsTitles": [
+      "American Tv Shows",
+      "Sci-Fi & Fantasy Tv Shows",
+      "Dramatic Tv Shows",
+      "K-Drama",
+      "Anime"
+    ]
+  },
+  "collection": {
+    "setMedia": {
+      "title": "Add to a Collection",
+      "noData": "There are no registered collections",
+      "cta": {
+        "submit": "Add",
+        "newCollection": "Create Collection"
+      }
+    },
+    "newCollection": {
+      "title": "Create Collection",
+      "field": {
+        "name": {
+          "label": "Name"
+        },
+        "description": {
+          "label": "Description (optional)"
+        }
+      },
+      "cta": {
+        "submit": "Create Collection",
+        "cancel": "Cancel"
+      }
+    },
+    "list": {
+      "title": "My Collections",
+      "addCollection": "Collection",
+      "noData": {
+        "description": "I noticed you haven't created any collections yet to share with your friends. Don't worry, we're here to help you get started!",
+        "cta": {
+          "submit": "Create Collection"
+        }
+      }
+    },
+    "view": {
+      "noData": {
+        "description": "Don't waste time, add your movie, series, documentary, and other recommendations. And share them with your friends!",
+        "cta": "Add Recommendations"
+      },
+      "deleteMedia": {
+        "title": "Are you sure you want to delete the recommendation:",
+        "cta": {
+          "cancel": "Cancel",
+          "submit": "Delete"
+        }
+      },
+      "cta": {
+        "share": "Share"
+      }
+    },
+    "feedback": {
+      "setMedia": {
+        "success": "Successfully added"
+      },
+      "newCollection": {
+        "success": "Collection created successfully"
+      }
+    }
+  },
+  "signIn": {
+    "title": "Sign In",
+    "field": {
+      "email": {
+        "label": "Email"
+      }
+    },
+    "cta": {
+      "submit": "Sign In",
+      "signUp": "Sign Up"
+    }
+  },
+  "signUp": {
+    "title": "Sign Up",
+    "field": {
+      "name": {
+        "label": "Name"
+      },
+      "email": {
+        "label": "Email"
+      }
+    },
+    "cta": {
+      "submit": "Sign Up",
+      "signIn": "Sign In"
+    }
+  },
+
+  "search": {
+    "title": "Search by cast name; movie title; tv show title; cartoon title",
+    "field": {
+      "placeholder": "Search by titles or cast"
+    },
+    "cta": {
+      "loadMore": "Load More"
+    }
+  }
+}

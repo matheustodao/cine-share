@@ -5,7 +5,8 @@ const nextConfig = {
   },
 
   experimental: {
-    serverActions: true
+    appDir: true,
+    serverActions: true,
   },
 
   images: {

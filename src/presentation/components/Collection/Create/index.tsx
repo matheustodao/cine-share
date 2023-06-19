@@ -17,6 +17,8 @@ import { createCollection } from 'infra/services/collection/createCollection';
 
 import { CollectionModalCreateProps } from 'types/presentation/collection';
 
+import { useDetectClickOutside } from 'react-detect-click-outside';
+import { useTranslation } from 'app/i18n';
 import { ModalContainerCollection } from '../styles/ModalContainer';
 import { Form } from './styles';
 
@@ -30,18 +32,18 @@ export function CollectionModalCreate({ onClose, visible }: CollectionModalCreat
     resolver: zodResolver(validationSchemaCreateCollection),
     mode: 'onBlur',
   });
+  const { t } = useTranslation('common');
   const [loading, setLoading] = useState(false);
+  const elementRef = useDetectClickOutside({ onTriggered: onClose });
 
   async function handleCreateCollection(data: SchemaCreateCollection) {
     try {
       setLoading(true);
       await createCollection(data);
 
-      toast.success('Coleção foi criada');
+      toast.success(t('collection.feedback.newCollection.success'));
       reset();
       onClose();
-    } catch {
-      toast.success('Não está autenticado, faça login na plataforma');
     } finally {
       setLoading(false);
     }
@@ -54,9 +56,11 @@ export function CollectionModalCreate({ onClose, visible }: CollectionModalCreat
   return (
     <Portal selector="create-collection-modal">
       <Overlay>
-        <ModalContainerCollection>
+        <ModalContainerCollection ref={elementRef}>
           <div className="header">
-            <Title as="strong" size="medium">Criar coleção</Title>
+            <Title as="strong" size="medium">
+              {t('collection.newCollection.title')}
+            </Title>
             <button type="button" onClick={onClose}>
               <X />
             </button>
@@ -65,20 +69,26 @@ export function CollectionModalCreate({ onClose, visible }: CollectionModalCreat
           <div className="content">
             <Form onSubmit={handleSubmit(handleCreateCollection)}>
               <FormGroup errorMessage={errors?.name?.message}>
-                <Input placeholder="Nome" {...register('name')} />
+                <Input
+                  placeholder={t('collection.newCollection.field.name.label')}
+                  {...register('name')}
+                />
               </FormGroup>
 
               <FormGroup errorMessage={errors?.description?.message}>
-                <Textarea placeholder="Descrição (opcional)" {...register('description')} />
+                <Textarea
+                  placeholder={t('collection.newCollection.field.description.label')}
+                  {...register('description')}
+                />
               </FormGroup>
 
               <div className="actions">
                 <Button type="submit" disabled={!isValid} loading={loading}>
-                  Criar Coleção
+                  {t('collection.newCollection.cta.submit')}
                 </Button>
 
                 <Button type="reset" outline schemaColor="softGray" onClick={onClose}>
-                  Cancelar
+                  {t('collection.newCollection.cta.cancel')}
                 </Button>
               </div>
             </Form>
