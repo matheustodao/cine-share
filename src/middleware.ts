@@ -5,6 +5,7 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import * as i18n from 'app/i18n/settings';
 
 import Negotiator from 'negotiator';
+import { nextAuthConfigs } from 'core/configs/nextAuth';
 
 function getLocale(request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {};
@@ -45,6 +46,13 @@ export function middleware(request: NextRequest) {
 
   if (pathnameIsMissingLocale) {
     return NextResponse.redirect(new URL(`/${localeToRedirect}/${pathname}`, request.url));
+  }
+
+  if (pathname.startsWith(`/${locale}/collection/user`)) {
+    const hasToken = request.cookies.get(nextAuthConfigs.cookies.sessionToken);
+    if (!hasToken) {
+      return NextResponse.redirect(new URL(`/${localeToRedirect}/home`, request.url));
+    }
   }
 
   if (pathname === `/${locale}`) {
