@@ -14,10 +14,12 @@ import { TMDBMultiSearch } from 'types/server/tmdb';
 import { Loader } from 'presentation/components/Loader';
 import { Text } from 'presentation/components/Typography/Text';
 import { Button } from 'presentation/components/Button';
+import { useTranslation } from 'app/i18n';
 import * as Root from './styles';
 
 export function SearchUI() {
   const [searchTerm, setSearchTerm] = useState('');
+  const { t } = useTranslation();
   const {
     data, isSuccess, refetch, isRefetching, isLoading, fetchNextPage, hasNextPage, isFetching,
   } = useInfiniteQuery('media_multi_search', ({ pageParam = 1 }) => getMultiSearch({ query: searchTerm, page: pageParam }), {
@@ -59,7 +61,7 @@ export function SearchUI() {
           <MagnifyingGlass />
           <Input
             type="search"
-            placeholder="Buscar por titulo ou elenco"
+            placeholder={t('search.field.placeholder')}
             value={searchTerm}
             onChange={handleChangeSearchTerm}
           />
@@ -116,7 +118,7 @@ export function SearchUI() {
             disabled={!hasNextPage}
             onClick={() => fetchNextPage()}
           >
-            Load More
+            {t('search.cta.loadMore')}
           </Button>
         </>
       )}
@@ -127,7 +129,7 @@ export function SearchUI() {
 
       {!searchTerm && (
         <Text as="p" schema={600} weight="regular">
-          Procura pelo nome do elenco ou titulo do filme, serie, desenho...
+          {t('search.title')}
         </Text>
       )}
     </Root.Container>

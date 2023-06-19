@@ -127,5 +127,15 @@
       "submit": "Sign Up",
       "signIn": "Sign In"
     }
+  },
+
+  "search": {
+    "title": "Search by cast name; movie title; tv show title; cartoon title",
+    "field": {
+      "placeholder": "Search by titles or cast"
+    },
+    "cta": {
+      "loadMore": "Load More"
+    }
   }
 }

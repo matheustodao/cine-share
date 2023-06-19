@@ -143,5 +143,15 @@
       "submit": "Cadastrar",
       "signIn": "Login"
     }
+  },
+
+  "search": {
+    "title": "Procura pelo nome do elenco ou título do filme, serie, desenho...",
+    "field": {
+      "placeholder": "Bucar por título ou elenco"
+    },
+    "cta": {
+      "loadMore": "Carregar Mais"
+    }
   }
 }
