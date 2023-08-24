@@ -10,7 +10,7 @@ export function LanguageSwitcher() {
   const supportedLanguages = ['pt-BR', 'en-US', 'ru-RU', 'ja-JP'];
 
   return (
-    <Link href={`/${!supportedLanguages.includes(locale) ? 'pt-BR' : supportedLanguages[(supportedLanguages.indexOf(locale) + 1) <= 5 ? 0 : supportedLanguages.indexOf(locale) + 1]}${pathname}`} scroll={false}>
+    <Link href={`/${!supportedLanguages.includes(locale) ? 'pt-BR' : supportedLanguages[(supportedLanguages.indexOf(locale) + 1) >= 5 ? 0 : supportedLanguages.indexOf(locale) + 1]}${pathname}`} scroll={false}>
       <Image
         src={`/assets/icons/${!supportedLanguages.includes(locale) ? 'pt-BR' : locale}-flag.svg`}
         alt="logo"
