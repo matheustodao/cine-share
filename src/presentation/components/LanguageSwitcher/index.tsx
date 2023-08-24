@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCustomPathname } from 'presentation/hook/useCustomPathname';
-import { useMemo } from 'react';
 
 export function LanguageSwitcher() {
   const { locale, pathname } = useCustomPathname();
