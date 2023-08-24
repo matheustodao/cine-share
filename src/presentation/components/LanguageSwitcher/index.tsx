@@ -3,17 +3,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCustomPathname } from 'presentation/hook/useCustomPathname';
-import { useMemo } from 'react';
 
 export function LanguageSwitcher() {
   const { locale, pathname } = useCustomPathname();
 
-  const isPTLocale = useMemo(() => locale === 'pt-BR', [locale]);
+  const supportedLanguages = ['pt-BR', 'en-US', 'ru-RU', 'ja-JP'];
 
   return (
-    <Link href={`/${isPTLocale ? 'en-US' : 'pt-BR'}${pathname}`} scroll={false}>
+    <Link href={`/${!supportedLanguages.includes(locale) ? 'pt-BR' : locale}${pathname}`} scroll={false}>
       <Image
-        src={`/assets/icons/${isPTLocale ? 'us' : 'br'}-flag.svg`}
+        src={`/assets/icons/${!supportedLanguages.includes(locale) ? 'pt-BR' : locale}-flag.svg`}
         alt="logo"
         width={34}
         height={34}
